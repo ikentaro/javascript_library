@@ -1,0 +1,17 @@
+{
+  "name": "js_lib",
+  "version": "1.0.0",
+  "description": "Client Library",
+  "main": "index.js",
+  "author": "Kentaro Inoue",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.0.5",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
