@@ -1,5 +1,4 @@
-window.util=window.util || {
-
+window.util = windo.util || {
 
 }
 
