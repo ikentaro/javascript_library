@@ -1,4 +1,6 @@
 import Complex from './math/Complex.js'
+import Vector from './math/Vector.js'
+
 import minus from './math/minus.js'
 import reverse from './math/reverse.js'
 
@@ -12,8 +14,9 @@ import sin from './math/sin.js'
 import cos from './math/cos.js'
 import tan from './math/tan.js'
 
-import diff from './math/diff.js'
-import solver from './math/solver.js'
+import diff     from './math/diff.js'
+import integral from './math/integral.js'
+import solver   from './math/solver.js'
 
 window.math=window.math || {
     minus: minus,
@@ -30,8 +33,10 @@ window.math=window.math || {
     tan: tan,
 
     diff: diff,
+    integral: integral,
     solver: solver,
-    
+
+    vector: (...args)=>{ return new Vector(...args); },
     complex: (re=0.0, im=1.0)=>{ return new Complex(re, im); }
 }
 
