@@ -17,8 +17,14 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const mat2=math.matrix([ 0, 2, 0 ], [ 2, 0, 2 ], [ 1, 2, 0 ]);
     const mat3=math.matrix([ 1, 1,-1 ], [-2, 0, 1 ], [ 0, 2, 1 ]);
     const mat4=math.matrix([ 0, 4, -2, 6 ], [ 2, 0, -4, 6 ], [ 4, 6, 8, 1 ], [ 4, -2, 2, 2 ]);
+    const cmat1=math.matrix([ math.complex(1, 1), math.complex(1, 2), 2, 0 ],
+			    [ math.complex(0, 1), 0, math.complex(2, -1), math.complex(1, -1) ],
+			    [ 0, 2, 4, math.complex(2, 2) ],
+			    [ 4, -2, 2, 2 ]);
 
     const rev3=mat3.reverse();
+    const rev4=mat4.reverse();
+    const crev1=cmat1.reverse();
     
     console.log(eMat);
     console.log(mat1.colVector(0));
@@ -32,7 +38,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
     console.log(math.mul(mat1, eMat));
     console.log(math.mul(mat1, mat2));
 
-    console.log(math.mul(mat3, rev3));
+    console.log('mat*rev check ', math.mul(mat3, rev3));
+    console.log('mat*rev check ', math.mul(mat4, rev4));
+    console.log('mat*rev check ', math.mul(cmat1, crev1));
     
     console.log('==== Liner Algebra test FINISH =====');
 });

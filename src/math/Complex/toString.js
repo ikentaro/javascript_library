@@ -1,4 +1,4 @@
-const toString=(z, config)=>{
+const toString=(z)=>{
     const MIN=1.0e-8;
     let str= Math.abs(z.real)<MIN ? '': z.real.toString();
     

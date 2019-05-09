@@ -44,7 +44,7 @@ const Complex=class{
 	return new Complex(this.real/abs2, -this.imag/abs2);
     }
 
-    toString(config){ return toString(this, config) };
+    toString(){ return toString(this); };
 
     isNumber(){ return true; };
     isFinite(){ return (Number.isFinite(this.re) && Number.isFinit(this.im)); };
