@@ -8,7 +8,7 @@ const mul=(...args)=>{
 	throw new Error('! math.mul invalid argument');
     }
     
-    return args.reduce((acc, a)=> mul2(acc, a), 1);
+    return args.reduce((acc, a)=> mul2(acc, a));
 }
 
 export default mul;

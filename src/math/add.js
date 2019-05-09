@@ -8,7 +8,7 @@ const add=(...args)=>{
 	throw new Error('! math.add invalid argument');
     }
     
-    return args.reduce((acc, a)=> add2(acc, a), 0);
+    return args.reduce((acc, a)=> add2(acc, a));
 }
 
 export default add;

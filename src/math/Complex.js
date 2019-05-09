@@ -45,6 +45,9 @@ const Complex=class{
     }
 
     toString(config){ return toString(this, config) };
+
+    isNumber(){ return true; };
+    isFinite(){ return (Number.isFinite(this.re) && Number.isFinit(this.im)); };
 }
 
 export default Complex;
