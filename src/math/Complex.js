@@ -11,7 +11,7 @@ const Complex=class{
     get abs2(){ return this.real*this.real+this.imag*this.imag; }
     get r(){ return Math.sqrt(this.abs2); }
     get abs(){ return this.r; }
-    get arg(){ return Math.atan2(this.real, this.imag); }
+    get arg(){ return Math.atan2(this.imag, this.real); }
 
     add(a){ 
 	if( typeof a==='number' ) return new Complex(this.real+a, this.imag);
@@ -44,6 +44,7 @@ const Complex=class{
 	return new Complex(this.real/abs2, -this.imag/abs2);
     }
 
+    copy(){ return new Complex(this.real, this.imag); }
     toString(){ return toString(this); };
 
     isNumber(){ return true; };

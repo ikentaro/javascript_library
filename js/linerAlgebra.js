@@ -21,12 +21,17 @@ window.addEventListener('DOMContentLoaded', ()=>{
 			    [ math.complex(0, 1), 0, math.complex(2, -1), math.complex(1, -1) ],
 			    [ 0, 2, 4, math.complex(2, 2) ],
 			    [ 4, -2, 2, 2 ]);
-
     const rev3=mat3.reverse();
     const rev4=mat4.reverse();
     const crev1=cmat1.reverse();
+
+    const mat5=math.matrix([ 2,-1, 1 ], [-1, 2, 1 ], [ 1,-1, 2 ]);
+
+    console.log(math.pow(math.complex(1, 1), 3));
+    const eignes=mat5.eigenAll();
+    console.log('eigns=', eignes);
     
-    console.log(eMat);
+    console.log(eMat.toString());
     console.log(mat1.colVector(0));
     console.log(mat1.rawVector(0));
     console.log(math.add(mat1, eMat));

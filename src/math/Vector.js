@@ -1,8 +1,10 @@
+import copy from './copy.js'
 import add from './add.js'
 import sub from './sub.js'
 import mul from './mul.js'
 import conj from './conj.js'
 import Matrix from './Matrix.js'
+import isComplex from './isComplex.js'
 
 const Vector=class extends Array{
     constructor(...args){
@@ -12,7 +14,8 @@ const Vector=class extends Array{
     get length(){ return this.length; }
     abs2(){ return this.reduce(e=> mul(e, conj(e))); };
     abs(){ return Math.sqrt(this.abs2()); };
-    
+
+    copy(){ return new Vector(...this.map(a=> copy(a))); };
     add(a){
 	if( a instanceof Vector && this.length===a.length ) return this.map((e, i)=> add(e, a[i]));
 	
@@ -31,6 +34,8 @@ const Vector=class extends Array{
 	
 	throw new Error('! Vector.mul(a)  invalid parameter  typeof(a)='+typeof a);
     }
+
+    isComplex(){ return this.one(e=> isComplex(e)); }
 };
 
 export default Vector;

@@ -17,6 +17,7 @@ import exp from './math/exp.js'
 import sin from './math/sin.js'
 import cos from './math/cos.js'
 import tan from './math/tan.js'
+import pow from './math/pow.js'
 
 import diff     from './math/diff.js'
 import integral from './math/integral.js'
@@ -38,6 +39,7 @@ window.math=window.math || {
     sin: sin,
     cos: cos,
     tan: tan,
+    pow, pow,
 
     diff: diff,
     integral: integral,

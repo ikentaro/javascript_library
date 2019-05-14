@@ -3,6 +3,7 @@ import add from '../add.js'
 import sub from '../sub.js'
 import div from '../div.js'
 import mul from '../mul.js'
+import copy from '../copy.js'
 
 import swapRaw from './swapRaw.js'
 import swapCol from './swapCol.js'
@@ -17,7 +18,7 @@ const sweepOut=(origin)=>{
     for( let i=0; i<origin.colSize; i++ ){
 	const raw=[];
 	for( let j=0; j<2*origin.rawSize; j++ ) raw.push(0);
-	for( let j=0; j<origin.rawSize; j++ ) raw[j]=origin[i][j];
+	for( let j=0; j<origin.rawSize; j++ ) raw[j]=copy(origin[i][j]);
     	raw[origin.rawSize+i]=1;
 	arr.push(raw);
     }
