@@ -1,6 +1,8 @@
 import Complex from './math/Complex.js'
 import Vector from './math/Vector.js'
 import Matrix from './math/Matrix.js'
+import makeMatrix from './math/makeMatrix.js'
+import unitMatrix from './math/unitMatrix.js'
 
 import minus from './math/minus.js'
 import reverse from './math/reverse.js'
@@ -47,7 +49,9 @@ window.math=window.math || {
 
     vector: (...args)=>{ return new Vector(...args); },
     matrix: (...args)=>{ return new Matrix(...args); },
-    complex: (re=0.0, im=1.0)=>{ return new Complex(re, im); }
+    makeMatrix: (colSize, rawSize)=>{ return makeMatrix(colSize, rawSize); },
+    unitMatrix: (size)=>{ return unitMatrix(size); },
+    complex: (re=0.0, im=1.0)=>{ return new Complex(re, im); },
 }
 
 console.log('===== math module print =====');

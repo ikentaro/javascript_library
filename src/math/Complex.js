@@ -49,6 +49,13 @@ const Complex=class{
 
     isNumber(){ return true; };
     isFinite(){ return (Number.isFinite(this.re) && Number.isFinit(this.im)); };
+
+    isSame(x, thre=1.0e-8){
+	if( typeof x==='number' ) return Math.abs(this.im)<thre && Math.abs(this.re-x)<thre;
+	else if( x instanceof Complex ) return Math.abs(this.im-x.im) && Math.abs(this.re-x.re)<thre;
+
+	throw new Error('! Complex.isSame invalid parameter');
+    }
 }
 
 export default Complex;

@@ -46,6 +46,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
     console.log('mat*rev check ', math.mul(mat3, rev3));
     console.log('mat*rev check ', math.mul(mat4, rev4));
     console.log('mat*rev check ', math.mul(cmat1, crev1));
+
+    const mat6=math.matrix([1,2,3,4],[2,5,4,0],[3,4,1,1],[4,0,1,2]);
+    const [ eigens6, eigen_vectors ]=mat6.jacobi();
+    const eigen_rev=eigen_vectors.reverse();
+    
+    console.log('eigen values =',eigens6);
+    console.log('R-1*mat6*R =', math.mul(eigen_rev, mat6, eigen_vectors));
     
     console.log('==== Liner Algebra test FINISH =====');
 });
