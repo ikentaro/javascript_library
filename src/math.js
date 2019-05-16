@@ -20,6 +20,10 @@ import sin from './math/sin.js'
 import cos from './math/cos.js'
 import tan from './math/tan.js'
 import pow from './math/pow.js'
+import log from './math/log.js'
+import asin from './math/asin.js'
+import acos from './math/acos.js'
+import atan from './math/atan.js'
 
 import diff     from './math/diff.js'
 import integral from './math/integral.js'
@@ -41,8 +45,12 @@ window.math=window.math || {
     sin: sin,
     cos: cos,
     tan: tan,
-    pow, pow,
-
+    pow: pow,
+    log: log,
+    asin: asin,
+    acos: acos,
+    atan: atan,
+    
     diff: diff,
     integral: integral,
     solver: solver,

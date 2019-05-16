@@ -15,6 +15,14 @@ window.addEventListener('DOMContentLoaded', ()=>{
     console.log('exp(z)  =', math.exp(z).toString());
     // -1.1312043837568135+2.4717266720048188j
     console.log('exp(z2) =', math.exp(z2).toString());
+    // 0.34657359027997264+0.7853981633974483j
+    console.log('log(z) =', math.log(z).toString());
+    // 0.6662394324925153+1.0612750619050357j
+    console.log('asin(z) =', math.asin(z).toString());
+    // 0.9045568943023814-1.0612750619050357j
+    console.log('acos(z) =', math.acos(z).toString());
+    // 1.0172219678978514+0.40235947810852507j
+    console.log('atan(z) =', math.atan(z).toString());
     
     const f1=(x)=>{ return math.add(math.mul(math.cos(x), math.cos(x)), math.mul(math.sin(x), math.sin(x))); };
     console.log('cos^2(x)+sin^2(x)=', f1(1).toString());

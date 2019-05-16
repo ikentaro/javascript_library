@@ -9,8 +9,8 @@ import sweepOut    from './Matrix/sweepOut.js'
 import jacobi      from './Matrix/jacobi.js'
 import toString    from './Matrix/toString.js'
 import isSymmetric from './Matrix/isSymmetric.js'
+import isHermite   from './Matrix/isHermite.js'
 import leverrierFaddev from './Matrix/leverrierFaddev.js'
-
 
 import dka      from './solver/dka.js'
 import bairstow from './solver/bairstow.js'
@@ -35,8 +35,8 @@ const Matrix=class extends Array{
     }
     jacobi(){ return jacobi(this); }
 
-    
     isSymmetric(){ return isSymmetric(this); }
+    isHermite(){ return isHermite(this); }
     
     mul(mat){
 	if( typeof mat ==='number' ) return new Matrix(...this.map(raw=> raw.map(e=> mul(mat, copy(e))))); 
