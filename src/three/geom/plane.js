@@ -1,9 +1,5 @@
-import parseParam from './plane/parseParam.js'
-
-const plane=(...args)=>{
-    const { width, height, widthSegments, heightSegments } = parseParam(...args);
-
-    new THREE.PlaneGeometry(width, height, widthSegments, heightSegments);
+const plane=(width, height, widthSegments=1, heightSegments=1)=>{
+    return new THREE.PlaneGeometry(width, height, widthSegments, heightSegments);
 }
 
 export default plane;

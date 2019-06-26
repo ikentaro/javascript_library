@@ -1,26 +1,24 @@
 import config from './three/config.js'
+import dump from './three/dump.js'
+import mesh from './three/mesh.js'
+import render from './three/render.js'
 
-import camera from './three/camera.js'
-import scene  from './three/scene.js'
-import geom   from './three/geom.js'
-import renderer from './three/renderer.js'
+import camera   from './three/camera.js'
 import material from './three/material.js'
-import helper from './three/helper.js'
+import geom     from './three/geom.js'
+import light    from './three/light.js'
 
 window.three=window.three || {
-    getCamera:   ()=> { return config.camera; },
-    getRenderer: ()=> { return config.renderer; },
-    getScene:    ()=> { return config.scene; },
+    config: config,
+    dump:   dump,
+    render: render,
     
     camera:   camera,
-    renderer: renderer,
-    scene:    scene,
-    geom:     geom,
     material: material,
-    mesh: (geom, material)=>{ return new THREE.Mesh(geom, material); },
-
-    helper: helper,
+    geom:     geom,
+    light:    light,
+    mesh:   mesh,
 }
 
-console.log('===== three module print =====');
+console.log('===== three module dump =====');
 console.log(window.three);

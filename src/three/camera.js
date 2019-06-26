@@ -1,17 +1,17 @@
 import config from './config.js'
 
-import prespective from './camera/prespective.js'
-import orthographic from './camera/orthographic.js'
+import perspective from './camera/perspective.js'
+import orthographics from './camera/orthographic.js'
 
 const camera={
-    prespective: (...args)=>{
-	config.camera=prespective(...args);
+    perspective: (...args)=>{
+	config.camera=perspective(...args);
 	return config.camera;
     },
-    orthographic: (...args)=>{
-	config.camera=orthographic(...args);
+    orthographics: (...args)=>{
+	config.camera=orthographics(...args);
 	return config.camera;
-    },
+    }
 }
 
 export default camera;

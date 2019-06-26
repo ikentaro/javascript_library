@@ -5,7 +5,7 @@ module.exports={
 //	util: './src/util.js',
 	math: './src/math.js',
 	three: './src/three.js',
-//	audio: './src/audio.js'
+	audio: './src/audio.js'
     },
 
     output: {
