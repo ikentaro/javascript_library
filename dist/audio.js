@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _audio_context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./audio/context.js */ \"./src/audio/context.js\");\n/* harmony import */ var _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audio/viewer.js */ \"./src/audio/viewer.js\");\n\n\nwindow.audio = window.audio || {\n  context: _audio_context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  viewer: _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n};\nconsole.log('===== audio module print =====');\nconsole.log(window.audio);\n\n//# sourceURL=webpack:///./src/audio.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _audio_context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./audio/context.js */ \"./src/audio/context.js\");\n/* harmony import */ var _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audio/viewer.js */ \"./src/audio/viewer.js\");\n/* harmony import */ var _audio_create_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./audio/create.js */ \"./src/audio/create.js\");\n\n\n\nwindow.audio = window.audio || {\n  context: _audio_context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  create: _audio_create_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  viewer: _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n};\nconsole.log('===== audio module print =====');\nconsole.log(window.audio);\n\n//# sourceURL=webpack:///./src/audio.js?");
 
 /***/ }),
 
@@ -107,6 +107,30 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _aud
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\nvar context = new (window.AudioContext || window.webkitAudioContext)();\n/* harmony default export */ __webpack_exports__[\"default\"] = (context);\n\n//# sourceURL=webpack:///./src/audio/context.js?");
+
+/***/ }),
+
+/***/ "./src/audio/create.js":
+/*!*****************************!*\
+  !*** ./src/audio/create.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./context.js */ \"./src/audio/context.js\");\n/* harmony import */ var _create_decodeAudioData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./create/decodeAudioData.js */ \"./src/audio/create/decodeAudioData.js\");\n\n\nvar create = {\n  elementSource: function elementSource(htmlElem) {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createMediaElementSource(htmlElem);\n  },\n  bufferSource: function bufferSource(url) {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createBufferSource();\n  },\n  decodeAudioData: _create_decodeAudioData_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  oscillator: function oscillator() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createOscillator();\n  },\n  gain: function gain() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createGain();\n  },\n  biquadFilter: function biquadFilter() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createBiquadFilter();\n  },\n  delay: function delay() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createDelay();\n  },\n  analyser: function analyser() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createAnalyser();\n  },\n  analyzer: function analyzer() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createAnalyser();\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (create);\n\n//# sourceURL=webpack:///./src/audio/create.js?");
+
+/***/ }),
+
+/***/ "./src/audio/create/decodeAudioData.js":
+/*!*********************************************!*\
+  !*** ./src/audio/create/decodeAudioData.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../context.js */ \"./src/audio/context.js\");\n\n\nvar decodeAudioData = function decodeAudioData(url) {\n  return new Promise(function (resolve) {\n    fetch(url).then(function (res) {\n      return res.arrayBuffer();\n    }).then(function (arrBuf) {\n      return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].decodeAudioData(arrBuf);\n    }).then(function (audioBuf) {\n      return resolve(audioBuf);\n    });\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (decodeAudioData);\n\n//# sourceURL=webpack:///./src/audio/create/decodeAudioData.js?");
 
 /***/ }),
 

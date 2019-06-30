@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/local/bin/yarn add snag.svg
+  /usr/bin/node /usr/local/bin/yarn add @babel/poly_fill
 
 PATH: 
   /home/kentaro/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/kentaro/bin/
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/snag.svg: Not found
+  Error: https://registry.yarnpkg.com/@babel%2fpoly_fill: Not found
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66255:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129397:22)
       at emitTwo (events.js:126:13)
@@ -40,7 +40,6 @@ npm manifest:
       "@babel/preset-env": "^7.4.3",
       "babel-cli": "^6.26.0",
       "babel-loader": "^8.0.5",
-      "three": "^0.103.0",
       "webpack": "^4.29.6",
       "webpack-cli": "^3.3.0"
     },
@@ -3989,11 +3988,6 @@ Lockfile:
       commander "^2.19.0"
       source-map "~0.6.1"
       source-map-support "~0.5.10"
-  
-  three@^0.103.0:
-    version "0.103.0"
-    resolved "https://registry.yarnpkg.com/three/-/three-0.103.0.tgz#63b3dbccc861caad93269618061a73dadebae71b"
-    integrity sha512-4WKRHTMt96sp+lX+Hx/eHtN9CWFyejDqr1ikgxZUJIkKEHVglSE7FY8n81NC6yWXqVSjUIQQppaxsoUe26Zi9g==
   
   through2@^2.0.0:
     version "2.0.5"
