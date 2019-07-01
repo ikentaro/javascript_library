@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _audio_context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./audio/context.js */ \"./src/audio/context.js\");\n/* harmony import */ var _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audio/viewer.js */ \"./src/audio/viewer.js\");\n/* harmony import */ var _audio_create_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./audio/create.js */ \"./src/audio/create.js\");\n\n\n\nwindow.audio = window.audio || {\n  context: _audio_context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  create: _audio_create_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  viewer: _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n};\nconsole.log('===== audio module print =====');\nconsole.log(window.audio);\n\n//# sourceURL=webpack:///./src/audio.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _audio_context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./audio/context.js */ \"./src/audio/context.js\");\n/* harmony import */ var _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audio/viewer.js */ \"./src/audio/viewer.js\");\n/* harmony import */ var _audio_create_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./audio/create.js */ \"./src/audio/create.js\");\n/* harmony import */ var _audio_setGainControl_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./audio/setGainControl.js */ \"./src/audio/setGainControl.js\");\n\n\n\n\nwindow.audio = window.audio || {\n  context: _audio_context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  create: _audio_create_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  viewer: _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  setGainControl: _audio_setGainControl_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"]\n};\nconsole.log('===== audio module print =====');\nconsole.log(window.audio);\n\n//# sourceURL=webpack:///./src/audio.js?");
 
 /***/ }),
 
@@ -131,6 +131,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _con
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../context.js */ \"./src/audio/context.js\");\n\n\nvar decodeAudioData = function decodeAudioData(url) {\n  return new Promise(function (resolve) {\n    fetch(url).then(function (res) {\n      return res.arrayBuffer();\n    }).then(function (arrBuf) {\n      return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].decodeAudioData(arrBuf);\n    }).then(function (audioBuf) {\n      return resolve(audioBuf);\n    });\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (decodeAudioData);\n\n//# sourceURL=webpack:///./src/audio/create/decodeAudioData.js?");
+
+/***/ }),
+
+/***/ "./src/audio/setGainControl.js":
+/*!*************************************!*\
+  !*** ./src/audio/setGainControl.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar setGainControl = function setGainControl(gain, input, valHtml) {\n  if (valHtml != null) valHtml.innerHTML = gain.gain.value;\n  input.addEventListener('change', function () {\n    if (valHtml != null) valHtml.innerHTML = gain.gain.value;\n    gain.gain.value = Number(input.value);\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (setGainControl);\n\n//# sourceURL=webpack:///./src/audio/setGainControl.js?");
 
 /***/ }),
 

@@ -24,11 +24,15 @@ window.addEventListener('DOMContentLoaded', async ()=>{
 	for( let i=0; i<8; i++ ) playSound(hihat, startTime+i*eightLength);
     });
 
+    const masterGain=audio.create.gain();
+    masterGain.connect(audio.context.destination);
+    audio.setGainControl(masterGain, document.getElementById('range-gain'), document.getElementById('span-gain'));
+    console.log(masterGain.gain);
     function playSound(buffer, time){
 //	console.log(buffer, time);
 	const source=audio.create.bufferSource();
 	source.buffer=buffer;
-	source.connect(audio.context.destination);
+	source.connect(masterGain);
 	source.start(time);
     }
     
