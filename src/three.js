@@ -8,6 +8,8 @@ import material from './three/material.js'
 import geom     from './three/geom.js'
 import light    from './three/light.js'
 
+import axis from './three/axis.js'
+
 window.three=window.three || {
     config: config,
     dump:   dump,
@@ -18,6 +20,8 @@ window.three=window.three || {
     geom:     geom,
     light:    light,
     mesh:   mesh,
+
+    axis: axis,
 }
 
 console.log('===== three module dump =====');

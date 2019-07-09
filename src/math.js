@@ -29,6 +29,8 @@ import diff     from './math/diff.js'
 import integral from './math/integral.js'
 import solver   from './math/solver.js'
 
+import rungeKutta from './math/rungeKutta.js'
+
 window.math=window.math || {
     minus: minus,
     reverse: reverse,
@@ -55,6 +57,8 @@ window.math=window.math || {
     integral: integral,
     solver: solver,
 
+    rungeKutta: rungeKutta,
+    
     vector: (...args)=>{ return new Vector(...args); },
     matrix: (...args)=>{ return new Matrix(...args); },
     makeMatrix: (colSize, rawSize)=>{ return makeMatrix(colSize, rawSize); },

@@ -5,16 +5,16 @@ const create={
     elementSource: (htmlElem)=>{ return context.createMediaElementSource(htmlElem); },
     bufferSource: (url)=>{ return context.createBufferSource(); },
 
-    decodeAudioData: decodeAudioData,
+    decodeAudioData: decodeAudioData, // return Promise;
     oscillator:    ()=>{ return context.createOscillator(); },
     
     gain: ()=>{ return context.createGain(); },
     biquadFilter:  ()=>{ return context.createBiquadFilter(); },
-    delay: ()=>{ return context.createDelay(); },
+    delay:  ()=>{ return context.createDelay(); },
+    merger: ()=>{ return context.createChannelMerger(); },
     
     analyser: ()=>{ return context.createAnalyser(); },
     analyzer: ()=>{ return context.createAnalyser(); },
-
 }
 
 export default create;

@@ -94,7 +94,19 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _audio_context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./audio/context.js */ \"./src/audio/context.js\");\n/* harmony import */ var _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audio/viewer.js */ \"./src/audio/viewer.js\");\n/* harmony import */ var _audio_create_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./audio/create.js */ \"./src/audio/create.js\");\n/* harmony import */ var _audio_setGainControl_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./audio/setGainControl.js */ \"./src/audio/setGainControl.js\");\n\n\n\n\nwindow.audio = window.audio || {\n  context: _audio_context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  create: _audio_create_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  viewer: _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  setGainControl: _audio_setGainControl_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"]\n};\nconsole.log('===== audio module print =====');\nconsole.log(window.audio);\n\n//# sourceURL=webpack:///./src/audio.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _audio_context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./audio/context.js */ \"./src/audio/context.js\");\n/* harmony import */ var _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./audio/viewer.js */ \"./src/audio/viewer.js\");\n/* harmony import */ var _audio_create_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./audio/create.js */ \"./src/audio/create.js\");\n/* harmony import */ var _audio_connect_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./audio/connect.js */ \"./src/audio/connect.js\");\n/* harmony import */ var _audio_module_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./audio/module.js */ \"./src/audio/module.js\");\n/* harmony import */ var _audio_setGainControl_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./audio/setGainControl.js */ \"./src/audio/setGainControl.js\");\n/* harmony import */ var _audio_setQvalControl_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./audio/setQvalControl.js */ \"./src/audio/setQvalControl.js\");\n/* harmony import */ var _audio_setFreqControl_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./audio/setFreqControl.js */ \"./src/audio/setFreqControl.js\");\n/* harmony import */ var _audio_setDetuneControl_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./audio/setDetuneControl.js */ \"./src/audio/setDetuneControl.js\");\n/* harmony import */ var _audio_setFilterOption_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./audio/setFilterOption.js */ \"./src/audio/setFilterOption.js\");\n\n\n\n\n\n\n\n\n\n\nwindow.audio = window.audio || {\n  context: _audio_context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  create: _audio_create_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  connect: _audio_connect_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n  viewer: _audio_viewer_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  module: _audio_module_js__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\n  setGainControl: _audio_setGainControl_js__WEBPACK_IMPORTED_MODULE_5__[\"default\"],\n  setQvalControl: _audio_setQvalControl_js__WEBPACK_IMPORTED_MODULE_6__[\"default\"],\n  setFreqControl: _audio_setFreqControl_js__WEBPACK_IMPORTED_MODULE_7__[\"default\"],\n  setDetuneControl: _audio_setDetuneControl_js__WEBPACK_IMPORTED_MODULE_8__[\"default\"],\n  setFilterOption: _audio_setFilterOption_js__WEBPACK_IMPORTED_MODULE_9__[\"default\"]\n};\nconsole.log('===== audio module print =====');\nconsole.log(window.audio);\n\n//# sourceURL=webpack:///./src/audio.js?");
+
+/***/ }),
+
+/***/ "./src/audio/connect.js":
+/*!******************************!*\
+  !*** ./src/audio/connect.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar connect = function connect() {\n  var _ref,\n      _arguments = arguments;\n\n  console.log('audio connection');\n\n  var _loop = function _loop(i) {\n    var input = i < 0 || _arguments.length <= i ? undefined : _arguments[i];\n    var next = i + 1 < 0 || _arguments.length <= i + 1 ? undefined : _arguments[i + 1];\n\n    if (next.inputs != null && Array.isArray(next.inputs)) {\n      next.inputs.forEach(function (a) {\n        input.connect(a);\n      });\n    } else {\n      input.connect(next);\n    }\n  };\n\n  for (var i = 0; i < arguments.length - 1; i++) {\n    _loop(i);\n  }\n\n  return _ref = arguments.length - 1, _ref < 0 || arguments.length <= _ref ? undefined : arguments[_ref];\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (connect);\n\n//# sourceURL=webpack:///./src/audio/connect.js?");
 
 /***/ }),
 
@@ -118,7 +130,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nvar context = new (window.Aud
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./context.js */ \"./src/audio/context.js\");\n/* harmony import */ var _create_decodeAudioData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./create/decodeAudioData.js */ \"./src/audio/create/decodeAudioData.js\");\n\n\nvar create = {\n  elementSource: function elementSource(htmlElem) {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createMediaElementSource(htmlElem);\n  },\n  bufferSource: function bufferSource(url) {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createBufferSource();\n  },\n  decodeAudioData: _create_decodeAudioData_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  oscillator: function oscillator() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createOscillator();\n  },\n  gain: function gain() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createGain();\n  },\n  biquadFilter: function biquadFilter() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createBiquadFilter();\n  },\n  delay: function delay() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createDelay();\n  },\n  analyser: function analyser() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createAnalyser();\n  },\n  analyzer: function analyzer() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createAnalyser();\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (create);\n\n//# sourceURL=webpack:///./src/audio/create.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./context.js */ \"./src/audio/context.js\");\n/* harmony import */ var _create_decodeAudioData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./create/decodeAudioData.js */ \"./src/audio/create/decodeAudioData.js\");\n\n\nvar create = {\n  elementSource: function elementSource(htmlElem) {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createMediaElementSource(htmlElem);\n  },\n  bufferSource: function bufferSource(url) {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createBufferSource();\n  },\n  decodeAudioData: _create_decodeAudioData_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  // return Promise;\n  oscillator: function oscillator() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createOscillator();\n  },\n  gain: function gain() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createGain();\n  },\n  biquadFilter: function biquadFilter() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createBiquadFilter();\n  },\n  delay: function delay() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createDelay();\n  },\n  merger: function merger() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createChannelMerger();\n  },\n  analyser: function analyser() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createAnalyser();\n  },\n  analyzer: function analyzer() {\n    return _context_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].createAnalyser();\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (create);\n\n//# sourceURL=webpack:///./src/audio/create.js?");
 
 /***/ }),
 
@@ -134,6 +146,90 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _con
 
 /***/ }),
 
+/***/ "./src/audio/module.js":
+/*!*****************************!*\
+  !*** ./src/audio/module.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _module_delay_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./module/delay.js */ \"./src/audio/module/delay.js\");\n/* harmony import */ var _module_pingPongDelay_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./module/pingPongDelay.js */ \"./src/audio/module/pingPongDelay.js\");\n/* harmony import */ var _module_chorus_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./module/chorus.js */ \"./src/audio/module/chorus.js\");\n\n\n\nvar module = {\n  delay: _module_delay_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  pingPongDelay: _module_pingPongDelay_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  chorus: _module_chorus_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (module);\n\n//# sourceURL=webpack:///./src/audio/module.js?");
+
+/***/ }),
+
+/***/ "./src/audio/module/chorus.js":
+/*!************************************!*\
+  !*** ./src/audio/module/chorus.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../create.js */ \"./src/audio/create.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\n\n\nvar Module =\n/*#__PURE__*/\nfunction () {\n  function Module() {\n    _classCallCheck(this, Module);\n\n    console.log('===== Delay Module Constructor START  =====');\n    this.lfo = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].oscillator();\n    this.input = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].gain();\n    this.depth = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].gain();\n    this.delay = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].delay();\n    this.mix = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].gain();\n    this.output = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].gain();\n    this.lfo.connect(this.depth).connect(this.delay.delayTime);\n    this.input.connect(this.delay).connect(this.mix);\n    this.inputs = [this.input];\n    console.log('===== Delay Module Constructor FINISH =====');\n  }\n\n  _createClass(Module, [{\n    key: \"connect\",\n    value: function connect(next) {\n      this.input.connect(next);\n      this.mix.connect(next);\n      return next;\n    }\n  }]);\n\n  return Module;\n}();\n\nvar chorus = function chorus() {\n  return new Module();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (chorus);\n\n//# sourceURL=webpack:///./src/audio/module/chorus.js?");
+
+/***/ }),
+
+/***/ "./src/audio/module/delay.js":
+/*!***********************************!*\
+  !*** ./src/audio/module/delay.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../create.js */ \"./src/audio/create.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\n\n\nvar Module =\n/*#__PURE__*/\nfunction () {\n  function Module() {\n    _classCallCheck(this, Module);\n\n    console.log('===== Delay Module Constructor START  =====');\n    this.delay = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].delay();\n    this.feedback = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].gain();\n    this.dry = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].gain();\n    this.wet = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].gain();\n    this.delay.connect(this.wet);\n    this.delay.connect(this.feedback).connect(this.delay);\n    this.wet.gain.value = 0.0;\n    this.dry.gain.value = 1.0;\n    this.inputs = [this.delay, this.dry];\n    console.log('===== Delay Module Constructor FINISH =====');\n  } //    get delay(){ return this.delay.delay; }\n  //    get feedback(){ return this.feedback.gain; }\n\n\n  _createClass(Module, [{\n    key: \"connect\",\n    value: function connect(next) {\n      this.wet.connect(next);\n      this.dry.connect(next);\n      return next;\n    }\n  }, {\n    key: \"mix\",\n    get: function get() {\n      return this.wet.gein;\n    }\n  }]);\n\n  return Module;\n}();\n\nvar delay = function delay() {\n  return new Module();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (delay);\n\n//# sourceURL=webpack:///./src/audio/module/delay.js?");
+
+/***/ }),
+
+/***/ "./src/audio/module/pingPongDelay.js":
+/*!*******************************************!*\
+  !*** ./src/audio/module/pingPongDelay.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _create_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../create.js */ \"./src/audio/create.js\");\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\n\n\nvar Module =\n/*#__PURE__*/\nfunction () {\n  function Module() {\n    _classCallCheck(this, Module);\n\n    console.log('===== PingPongDelay Module Constructor START  =====');\n    this.merger = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].merger();\n    this.delay1 = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].delay();\n    this.delay2 = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].delay();\n    this.feedback = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].gain();\n    this.wet = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].gain();\n    this.dry = _create_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].gain();\n    this.delay1.connect(this.delay2).connect(this.feedback).connect(this.delay1);\n    this.delay1.connect(this.merger, 0, 0);\n    this.delay2.connect(this.merger, 0, 1);\n    this.merger.connect(this.wet);\n    this.inputs = [this.delay1, this.dry];\n    console.log('===== PingPongDelay Module Constructor FINISH =====');\n  }\n\n  _createClass(Module, [{\n    key: \"connect\",\n    value: function connect(next) {\n      this.dry.connect(next);\n      this.wet.connect(next);\n      return next;\n    }\n  }]);\n\n  return Module;\n}();\n\nvar pingPhongDelay = function pingPhongDelay() {\n  return new Module();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (pingPhongDelay);\n\n//# sourceURL=webpack:///./src/audio/module/pingPongDelay.js?");
+
+/***/ }),
+
+/***/ "./src/audio/setDetuneControl.js":
+/*!***************************************!*\
+  !*** ./src/audio/setDetuneControl.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar setDetuneControl = function setDetuneControl(audioNode, input, valHtml) {\n  if (valHtml != null) valHtml.innerHTML = audioNode.detune.value; //    console.log(valHtml);\n\n  input.addEventListener('change', function () {\n    audioNode.detune.value = Number(input.value);\n    if (valHtml != null) valHtml.innerHTML = audioNode.detune.value;\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (setDetuneControl);\n\n//# sourceURL=webpack:///./src/audio/setDetuneControl.js?");
+
+/***/ }),
+
+/***/ "./src/audio/setFilterOption.js":
+/*!**************************************!*\
+  !*** ./src/audio/setFilterOption.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nfunction _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }\n\nfunction _nonIterableSpread() { throw new TypeError(\"Invalid attempt to spread non-iterable instance\"); }\n\nfunction _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === \"[object Arguments]\") return Array.from(iter); }\n\nfunction _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }\n\nvar list = [{\n  name: 'lowpass',\n  ja: 'ローパス'\n}, {\n  name: 'highpass',\n  ja: 'ハイパス'\n}, {\n  name: 'bandpass',\n  ja: 'バンドパス'\n}, {\n  name: 'lowshelf',\n  ja: 'ローシェルフ'\n}, {\n  name: 'highshelf',\n  ja: 'ハイシェルフ'\n}, {\n  name: 'peaking',\n  ja: 'ピーキング'\n}, {\n  name: 'notch',\n  ja: 'ノッチ'\n}, {\n  name: 'allpass',\n  ja: 'オールパス'\n}];\n\nvar setFilterOption = function setFilterOption(filter, select) {\n  var ja = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;\n\n  for (var _i = 0, _list = list; _i < _list.length; _i++) {\n    var a = _list[_i];\n\n    var _option = document.createElement('option');\n\n    _option.value = a.name;\n    _option.innerHTML = ja ? a.ja : a.name;\n    select.appendChild(_option);\n  }\n\n  var option = _toConsumableArray(select.children).filter(function (a) {\n    return a.value === filter.type;\n  })[0];\n\n  if (option != null) option.selected = true;\n  select.addEventListener('change', function () {\n    var option = select[select.selectedIndex];\n    filter.type = option.value;\n    console.log('===== set filter type ', filter.type, '=====');\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (setFilterOption);\n\n//# sourceURL=webpack:///./src/audio/setFilterOption.js?");
+
+/***/ }),
+
+/***/ "./src/audio/setFreqControl.js":
+/*!*************************************!*\
+  !*** ./src/audio/setFreqControl.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar setFreqControl = function setFreqControl(audioNode, input, valHtml) {\n  if (valHtml != null) valHtml.innerHTML = audioNode.frequency.value; //    console.log(valHtml);\n\n  input.addEventListener('change', function () {\n    audioNode.frequency.value = Number(input.value);\n    if (valHtml != null) valHtml.innerHTML = audioNode.frequency.value;\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (setFreqControl);\n\n//# sourceURL=webpack:///./src/audio/setFreqControl.js?");
+
+/***/ }),
+
 /***/ "./src/audio/setGainControl.js":
 /*!*************************************!*\
   !*** ./src/audio/setGainControl.js ***!
@@ -143,6 +239,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _con
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\nvar setGainControl = function setGainControl(gain, input, valHtml) {\n  if (valHtml != null) valHtml.innerHTML = gain.gain.value;\n  input.addEventListener('change', function () {\n    if (valHtml != null) valHtml.innerHTML = gain.gain.value;\n    gain.gain.value = Number(input.value);\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (setGainControl);\n\n//# sourceURL=webpack:///./src/audio/setGainControl.js?");
+
+/***/ }),
+
+/***/ "./src/audio/setQvalControl.js":
+/*!*************************************!*\
+  !*** ./src/audio/setQvalControl.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar setQvalControl = function setQvalControl(filter, input, valHtml) {\n  if (valHtml != null) valHtml.innerHTML = filter.Q.value; //    console.log(valHtml);\n\n  input.addEventListener('change', function () {\n    filter.Q.value = Number(input.value);\n    if (valHtml != null) valHtml.innerHTML = filter.Q.value;\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (setQvalControl);\n\n//# sourceURL=webpack:///./src/audio/setQvalControl.js?");
 
 /***/ }),
 
