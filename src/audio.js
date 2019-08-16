@@ -9,6 +9,10 @@ import setGainControl from './audio/setGainControl.js'
 import setQvalControl from './audio/setQvalControl.js'
 import setFreqControl from './audio/setFreqControl.js'
 import setDetuneControl from './audio/setDetuneControl.js'
+import setDelayControl  from './audio/setDelayControl.js'
+import setFeedbackControl from './audio/setFeedbackControl.js'
+import setMixControl from './audio/setMixControl.js'
+
 import setFilterOption  from './audio/setFilterOption.js'
 
 window.audio=window.audio || {
@@ -23,7 +27,10 @@ window.audio=window.audio || {
     setQvalControl:   setQvalControl,
     setFreqControl:   setFreqControl,
     setDetuneControl: setDetuneControl,
+    setDelayControl:  setDelayControl,
     setFilterOption:  setFilterOption,
+    setFeedbackControl: setFeedbackControl,
+    setMixControl: setMixControl,
 }
 
 console.log('===== audio module print =====');

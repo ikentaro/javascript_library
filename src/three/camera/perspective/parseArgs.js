@@ -2,7 +2,7 @@ import config from '../../config.js'
 
 const parseArgs=(...args)=>{
     let aspect=1;
-//    if( config.html!=null ) aspect=config.html.clientHeight/config.html.clientWidth;
+    if( config.html!=null ) aspect=config.html.clientWidth/config.html.clientHeight;
     
     const obj= { fov: 50, 'aspect': aspect, near: 0.1, far: 2000 };
 

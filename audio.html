@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="audio.css">
 
+    <script src="../lib/Snap.svg-0.5.1/dist/snap.svg-min.js"></script>
     <script src="dist/audio.js"></script>
     <script src="js/audio.js"></script>
   </head>
@@ -14,24 +15,50 @@
   <body>
     <header>
       <h1>Web Audio API テストページ</h1>
+      <!--  サンプルレート<input id="sampleRate"></input> -->
       サンプルレート: <span id="sampleRate"></span>
       ベースレイテンシー: <span id="baseLatency"></span>
       アウトプットレイテンシー: <span id="outputLatency"></span>
       <br>
-      現在時刻: <span id="currentTime"></span> <br>
-      状態: <span id="state"></span><br>
+      <!--      現在時刻: <span id="currentTime"></span> <br> -->
+      現在時刻: <input id="currentTime" readonly>
+      状態: <input id="state" type="text" readonly><br>
 
-      <input id="range-bpm" type="range" min="0" max="200" step="1" value="60"></input> BMP : <span id="span-bpm"></span><br>
-      <input id="range-gain" type="range" min="0" max="2" step="0.01" value="1"></input> マスターボリューム : <span id="span-gain"></span><br>
+      <input id="range-bpm" type="range" min="0" max="200" step="1" value="60"></input>
+      BPM : <input id="span-bpm" readonly><br>
+      <input id="range-gain" type="range" min="0" max="2" step="0.01" value="1"></input> マスターボリューム : <input id="span-gain" readonly></input><br>
 
-      双2次フィルター<br>
-      <input id="range-Q" type="range" min="0" max="2" step="0.01" value="1"></input> Q値 : <span id="span-Q"></span><br>
-      <input id="range-filter-gain" type="range" min="0" max="2" step="0.01" value="1"></input> ゲイン : <span id="span-filter-gain"></span><br>
-      <input id="range-filter-freq" type="range" min="0" max="2500" step="1" value="350"></input> 周波数 : <span id="span-filter-freq"></span><br>
-      <input id="range-filter-detune" type="range" min="0" max="2500" step="1" value="350"></input> デチューン : <span id="span-filter-detune"></span><br>
-      <select id="filter-type"></select><br>
+      <div>
+	双2次フィルター<br>
+	<input id="range-Q" type="range" min="0" max="10" step="0.01" value="1"> Q値 : <input id="span-Q" readonly><br>
+	<input id="range-filter-gain" type="range" min="0" max="2" step="0.01" value="1"> ゲイン : <input id="span-filter-gain" readonly><br>
+	<input id="range-filter-freq" type="range" min="0" max="2500" step="1" value="350"> 周波数 : <input id="span-filter-freq" readonly><br>
+	<input id="range-filter-detune" type="range" min="-100" max="100" step="1" value="0"> デチューン : <input id="span-filter-detune" readonly><br>
+	<select id="filter-type"></select><br>
+      </div>
 
+      <div>
+	ディレイモジュール<br>
+	<input id="range-delay-time"     type="range" min="0" max="1" step="0.01" value="0.1"></input> ディレイタイム : <input id="span-delay-time" readonly><br>
+	<input id="range-delay-feedback" type="range" min="0" max="1" step="0.01" value="0.1"></input> フィードバック : <input id="span-delay-feedback" readonly><br>
+	<input id="range-delay-mix"      type="range" min="0" max="1" step="0.01" value="0.1"></input> Mix : <input id="span-delay-mix" readonly><br>
+      </div>
 
+      <div>
+	ピンポンディレイ<br>
+	<input id="range-ppdelay1-time" type="range" min="0" max="1" step="0.01" value="0.1"></input> ディレイタイム1 : <input id="span-ppdelay1-time" readonly><br>
+	<input id="range-ppdelay2-time" type="range" min="0" max="1" step="0.01" value="0.1"></input> ディレイタイム2 : <input id="span-ppdelay2-time" readonly><br>
+	<input id="range-ppdelay-feedback" type="range" min="0" max="1" step="0.01" value="0.1"></input> フィードバック : <input id="span-ppdelay-feedback" readonly><br>
+	<input id="range-ppdelay-mix" type="range" min="0" max="1" step="0.01" value="0.1"></input> Mix : <input id="span-ppdelay-mix" readonly><br>
+      </div>
+
+      <div>
+	コーラス<br>
+	<input id="range-chorus-speed" type="range", min="0" max="10" step="0.1" value="5"></input> スピード : <input id="span-chorus-speed" readonly><br>
+	<input id="range-chorus-depth" type="range", min="0" max="0.1" step="0.001" value="0.01"></input> ディプス : <input id="span-chorus-depth" readonly><br>
+	<input id="range-chorus-mix"   type="range", min="0" max="1" step="0.1" value="0.5"></input> Mix : <input id="span-chorus-mix" readonly><br>
+      </div>
+      
       <button id="play">Play</button><br>
     </header>
 

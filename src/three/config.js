@@ -1,6 +1,7 @@
 import scene    from './config/scene.js'
 import renderer from './config/renderer.js'
 import set      from './config/set.js'
+import dump     from './config/dump.js'
 
 const config={
     scene:    scene,
@@ -8,7 +9,8 @@ const config={
     camera:   null,
     html:     null,
 
-    set: function(obj){ set(this, obj); }
+    set: (obj)=>{ set(config, obj); },
+    dump: ()=>{ dump(config); }
 }
 
 export default config;
