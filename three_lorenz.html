@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Three.js Wrapper Library ローレンツ・アトラクタ</title>
+    <meta name="description" content="Three.jsのラッパーライブラリのサンプル.1 ローレンツアトラクタ シミュレーション">
+
+    <link rel="stylesheet" href="three_test.css">
+    
+    <script src="../lib/three.js-master/build/three.min.js"></script>
+    <script src="dist/three.js"></script>
+    <script src="dist/math.js"></script>
+    <script src="js/three_lorenz.js"></script>
+  </head>
+  
+  <body>
+    <header>
+      <h1>Three.jsラッパー例 ローレンツ方程式</h1>
+      <form>
+	p : <input type="number" value="1" min="0" max="2" step="0.1" id="number-p"></input>
+	r : <input type="number" value="1" min="0" max="2" step="0.1" id="number-r"></input>
+	b : <input type="number" value="1" min="0" max="2" step="0.1" id="number-b"></input><br>
+	<button id="btn-start">START</button>
+      </form>
+    </header>
+
+    <main>
+      <div id="canvas">
+      </div>
+    </main>
+    
+    <footer>
+    </footer>
+  </body>
+</html>
