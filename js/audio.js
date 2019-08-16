@@ -16,8 +16,34 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     const pingPongDelay=audio.module.pingPongDelay();
     const chorus=audio.module.chorus();
 
-    audio.connect(masterGain, delay, pingPongDelay, filter, chorus, audio.context.destination);
+    [ document.getElementById('delay-connect'), document.getElementById('ppdelay-connect'), document.getElementById('filter-connect'), document.getElementById('chorus-connect') ].forEach(a=>{
+	a.addEventListener('change', connectModules);
+    });
+    
+    connectModules();
+    function connectModules(){
+	console.log('===== connectModules Call =====');
+	const modules=[ delay, pingPongDelay, filter, chorus ];
+	const bools=[ document.getElementById('delay-connect').checked, document.getElementById('ppdelay-connect').checked,
+		      document.getElementById('filter-connect').checked, document.getElementById('chorus-connect').checked ];
+	console.log('bools :', bools);
+	masterGain.disconnect();
+	modules.forEach(a=>{
+	    console.log('module', a);
+	    a.disconnect()
+	});
 
+	let input=masterGain;
+	for( let i=0; i<modules.length; i++ ){
+	    if( bools[i]===true ){
+		console.log('input : ', input);
+		audio.connect(input, modules[i]);
+		input=modules[i];
+	    }
+	}
+	input.connect(audio.context.destination);
+    }
+    
     //*** MasterGain Controller ***//
     audio.setGainControl(masterGain, document.getElementById('range-gain'), document.getElementById('span-gain'));
 

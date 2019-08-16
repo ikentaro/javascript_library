@@ -28,6 +28,10 @@ const Module=class{
 	this.dry.connect(next);
 	return next;
     }
+    disconnect(){
+	this.wet.disconnect();
+	this.dry.disconnect();
+    }
 };
 
 

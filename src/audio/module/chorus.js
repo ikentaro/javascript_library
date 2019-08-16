@@ -24,6 +24,10 @@ const Module=class{
 	this._mix.connect(next);
 	return next;
     }
+    disconnect(){
+	this.input.disconnect();
+	this._mix.disconnect();
+    }
 }
 
 const chorus=()=>{

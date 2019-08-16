@@ -32,6 +32,10 @@ const Module=class{
 	this.wet.connect(next);
 	return next;
     }
+    disconnect(){
+	this.dry.disconnect();
+	this.wet.disconnect();
+    }
 }
 
 const pingPhongDelay=()=>{ return new Module(); }
