@@ -8,7 +8,6 @@ const setGainControl=(gain, input, valHtml)=>{
 	    step*=10;
 	}
     }
-//    console.log('fix digit', fix);
     
     if( valHtml!=null ){	
 	const setValue=valHtml.tagName==='INPUT' ? ()=>{ valHtml.value=Number(gain.gain.value).toFixed(fix) } : ()=>{ valHtml.innerHTML=Number(gain.gain.value).toFixed(fix) };

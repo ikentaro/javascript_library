@@ -20,42 +20,18 @@ window.addEventListener('DOMContentLoaded', async ()=>{
 	a.addEventListener('change', connectModules);
     });
 
-    //*** Display module setting ***//
-    setDisplayControll(document.getElementById('filter-display'), document.getElementById('filter'));
-    
-    // document.getElementById('filter-display').addEventListener('change', ()=>{
-    // 	const flag=document.getElementById('filter-display').checked;
-    // 	const div=document.getElementById('filter');
-    // 	if( flag===true ) div.style.display='block';
-    // 	else div.style.display='none';
-    // });
-
-    function setDisplayControll(checkbox, elem){
-	const flag=checkbox.checked;
-	if( flag===true ) elem.style.display='block';
-	else elem.style.display='none';
-	checkbox.addEventListener('check',setDisplayControll);
-    }
-
-    //******************************//
-    
+    //******************************//    
     connectModules();
     function connectModules(){
-	console.log('===== connectModules Call =====');
 	const modules=[ delay, pingPongDelay, filter, chorus ];
 	const bools=[ document.getElementById('delay-connect').checked, document.getElementById('ppdelay-connect').checked,
 		      document.getElementById('filter-connect').checked, document.getElementById('chorus-connect').checked ];
-//	console.log('bools :', bools);
 	masterGain.disconnect();
-	modules.forEach(a=>{
-//	    console.log('module', a);
-	    a.disconnect()
-	});
+	modules.forEach(a=>{ a.disconnect() });
 
 	let input=masterGain;
 	for( let i=0; i<modules.length; i++ ){
 	    if( bools[i]===true ){
-//		console.log('input : ', input);
 		audio.connect(input, modules[i]);
 		input=modules[i];
 	    }
@@ -88,7 +64,40 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     audio.setFreqControl(chorus.lfo, document.getElementById('range-chorus-speed'), document.getElementById('span-chorus-speed'));
     audio.setGainControl(chorus.depth, document.getElementById('range-chorus-depth'), document.getElementById('span-chorus-depth'));
     audio.setMixControl(chorus, document.getElementById('range-chorus-mix'), document.getElementById('span-chorus-mix'));
-    
+
+    //*** Display module setting ***//
+    const filterDisp=document.getElementById('filter-display'), filterDiv=document.getElementById('filter');
+    setDisplayControll(filterDisp, filterDiv);
+    filterDisp.addEventListener('change', ()=>{
+	const flag=filterDisp.checked;
+	if( flag===true ) filterDiv.style.display='block';
+	else filterDiv.style.display='none';
+    });
+
+    const delayDisp=document.getElementById('delay-display'), delayDiv=document.getElementById('delay');
+    setDisplayControll(delayDisp, delayDiv);
+    delayDisp.addEventListener('change', ()=>{
+	const flag=delayDisp.checked;
+	if( flag===true ) delayDiv.style.display='block';
+	else delayDiv.style.display='none';
+    });
+
+    const ppdelayDisp=document.getElementById('ppdelay-display'), ppdelayDiv=document.getElementById('ppdelay');
+    setDisplayControll(ppdelayDisp, ppdelayDiv);
+    ppdelayDisp.addEventListener('change', ()=>{
+	const flag=ppdelayDisp.checked;
+	if( flag===true ) ppdelayDiv.style.display='block';
+	else ppdelayDiv.style.display='none';
+    });
+
+    const chorusDisp=document.getElementById('chorus-display'), chorusDiv=document.getElementById('chorus');
+    setDisplayControll(chorusDisp, chorusDiv);
+    chorusDisp.addEventListener('change', ()=>{
+	const flag=chorusDisp.checked;
+	if( flag===true ) chorusDiv.style.display='block';
+	else chorusDiv.style.display='none';
+    });
+        
     const range = document.getElementById('range-bpm'), span  = document.getElementById('span-bpm');
     range.addEventListener('change', setBPM);
     setBPM();
@@ -96,6 +105,11 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     function playSound(buffer, time){ const source=audio.create.bufferSource(); source.buffer=buffer; source.connect(masterGain); source.start(time); }
     function noteLength(){ return 60*4/document.getElementById('range-bpm').value; }
     function setBPM(){ span.value=range.value; }
+    function setDisplayControll(checkbox, elem){
+	const flag=checkbox.checked;
+	if( flag===true ) elem.style.display='block';
+	else elem.style.display='none';
+    }
     function playDrum(){
 	const eightLength=noteLength()/8.;
 	const startTime=audio.context.currentTime+0.01;
