@@ -7,8 +7,13 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     audio.viewer.currentTime(document.getElementById('currentTime'));
     audio.viewer.state(document.getElementById('state'));
 
-    const [ kick, hihat, snare ] = await Promise.all([ audio.create.decodeAudioData('./wav/kick.wav'), audio.create.decodeAudioData('./wav/hihat.wav'), audio.create.decodeAudioData('./wav/snare.wav') ]);
-    document.getElementById('play').addEventListener('click', playDrum);
+    const [ kick, hihat, snare, jazz0, jazz1, jazz2 ] = await Promise.all([ audio.create.decodeAudioData('./wav/kick.wav'),
+									    audio.create.decodeAudioData('./wav/hihat.wav'),
+									    audio.create.decodeAudioData('./wav/snare.wav'),
+									    audio.create.decodeAudioData('./music/CloserToJazz.mp3'),
+									    audio.create.decodeAudioData('./music/OkeyDokeySmokey.mp3'),
+									    audio.create.decodeAudioData('./music/StandardJazzBars.mp3') ]);
+    document.getElementById('play').addEventListener('click', play);
 
     const masterGain=audio.create.gain();
     const filter=audio.create.biquadFilter();
@@ -102,6 +107,16 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     range.addEventListener('change', setBPM);
     setBPM();
 
+    function play(){
+	const option=[ ...document.getElementById('sound-src')].filter(a=> a.selected)[0];
+	if( option.value==='drum0' ) playDrum();
+	else if( option.value==='jazz0' ) playSound(jazz0, audio.context.currentTime+0.01);
+	else if( option.value==='jazz1' ) playSound(jazz1, audio.context.currentTime+0.01);
+	else if( option.value==='jazz2' ) playSound(jazz2, audio.context.currentTime+0.01);
+	else alert('音源が見つかりません');
+	console.log(option);
+    }
+    
     function playSound(buffer, time){ const source=audio.create.bufferSource(); source.buffer=buffer; source.connect(masterGain); source.start(time); }
     function noteLength(){ return 60*4/document.getElementById('range-bpm').value; }
     function setBPM(){ span.value=range.value; }
