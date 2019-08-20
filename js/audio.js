@@ -21,9 +21,8 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     const pingPongDelay=audio.module.pingPongDelay();
     const chorus=audio.module.chorus();
 
-    [ document.getElementById('delay-connect'), document.getElementById('ppdelay-connect'), document.getElementById('filter-connect'), document.getElementById('chorus-connect') ].forEach(a=>{
-	a.addEventListener('change', connectModules);
-    });
+    [ document.getElementById('delay-connect'), document.getElementById('ppdelay-connect'), document.getElementById('filter-connect'), document.getElementById('chorus-connect') ]
+	.forEach(a=>{ a.addEventListener('change', connectModules); });
 
     //******************************//    
     connectModules();
