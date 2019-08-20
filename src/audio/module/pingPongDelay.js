@@ -2,7 +2,6 @@ import create from '../create.js'
 
 const Module=class{
     constructor(){
-	console.log('===== PingPongDelay Module Constructor START  =====');
 	this.merger    = create.merger();
 	this.delay1    = create.delay();
 	this.delay2    = create.delay();
@@ -16,7 +15,6 @@ const Module=class{
 	this.merger.connect(this.wet);
 
 	this.inputs= [ this.delay1, this.dry ];
-	console.log('===== PingPongDelay Module Constructor FINISH =====');
     }
 
     get delayTime1(){ return this.delay1.delayTime; }

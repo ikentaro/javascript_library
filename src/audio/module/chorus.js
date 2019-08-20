@@ -2,7 +2,6 @@ import create from '../create.js'
 
 const Module=class{
     constructor(){
-        console.log('===== Delay Module Constructor START  =====');
 	this.lfo  =create.oscillator();
 	this.input=create.gain();
 	this.depth=create.gain();
@@ -14,7 +13,6 @@ const Module=class{
 	this.input.connect(this.delay).connect(this._mix);
 
 	this.inputs=[ this.input ];
-	console.log('===== Delay Module Constructor FINISH =====');
     }
 
     get mix(){ return this._mix.gain.value; }

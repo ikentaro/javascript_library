@@ -2,7 +2,6 @@ import create from '../create.js'
 
 const Module=class{
     constructor(){
-	console.log('===== Delay Module Constructor START  =====');
 	this.delay=create.delay();	
 	this.feedback=create.gain();
 	this.dry=create.gain();
@@ -13,7 +12,6 @@ const Module=class{
 	this.dry.gain.value=1.0;
 
 	this.inputs=[ this.delay, this.dry ];
-	console.log('===== Delay Module Constructor FINISH =====');
     }
 
     get delayTime(){ return this.delay.delayTime; }
