@@ -19,6 +19,25 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     [ document.getElementById('delay-connect'), document.getElementById('ppdelay-connect'), document.getElementById('filter-connect'), document.getElementById('chorus-connect') ].forEach(a=>{
 	a.addEventListener('change', connectModules);
     });
+
+    //*** Display module setting ***//
+    setDisplayControll(document.getElementById('filter-display'), document.getElementById('filter'));
+    
+    // document.getElementById('filter-display').addEventListener('change', ()=>{
+    // 	const flag=document.getElementById('filter-display').checked;
+    // 	const div=document.getElementById('filter');
+    // 	if( flag===true ) div.style.display='block';
+    // 	else div.style.display='none';
+    // });
+
+    function setDisplayControll(checkbox, elem){
+	const flag=checkbox.checked;
+	if( flag===true ) elem.style.display='block';
+	else elem.style.display='none';
+	checkbox.addEventListener('check',setDisplayControll);
+    }
+
+    //******************************//
     
     connectModules();
     function connectModules(){
@@ -26,17 +45,17 @@ window.addEventListener('DOMContentLoaded', async ()=>{
 	const modules=[ delay, pingPongDelay, filter, chorus ];
 	const bools=[ document.getElementById('delay-connect').checked, document.getElementById('ppdelay-connect').checked,
 		      document.getElementById('filter-connect').checked, document.getElementById('chorus-connect').checked ];
-	console.log('bools :', bools);
+//	console.log('bools :', bools);
 	masterGain.disconnect();
 	modules.forEach(a=>{
-	    console.log('module', a);
+//	    console.log('module', a);
 	    a.disconnect()
 	});
 
 	let input=masterGain;
 	for( let i=0; i<modules.length; i++ ){
 	    if( bools[i]===true ){
-		console.log('input : ', input);
+//		console.log('input : ', input);
 		audio.connect(input, modules[i]);
 		input=modules[i];
 	    }

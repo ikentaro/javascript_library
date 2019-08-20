@@ -1,6 +1,4 @@
 const connect=(...args)=>{
-    console.log('audio connection');
-
     for( let i=0; i<args.length-1; i++ ){
 	const input = args[i];
 	const next  = args[i+1];
