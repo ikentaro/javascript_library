@@ -20,16 +20,22 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     const delay=audio.module.delay();
     const pingPongDelay=audio.module.pingPongDelay();
     const chorus=audio.module.chorus();
+    const analyzer=audio.create.analyzer();
 
+    svg.config.setPaper(document.getElementById('svg-canvas'));
+    console.log(svg.config.paper);
+    svg.dump();
+    audio.viewer.analyzer(analyzer, svg.graph());
+    
     [ document.getElementById('delay-connect'), document.getElementById('ppdelay-connect'), document.getElementById('filter-connect'), document.getElementById('chorus-connect') ]
 	.forEach(a=>{ a.addEventListener('change', connectModules); });
 
     //******************************//    
     connectModules();
     function connectModules(){
-	const modules=[ delay, pingPongDelay, filter, chorus ];
+	const modules=[ delay, pingPongDelay, filter, chorus, analyzer ];
 	const bools=[ document.getElementById('delay-connect').checked, document.getElementById('ppdelay-connect').checked,
-		      document.getElementById('filter-connect').checked, document.getElementById('chorus-connect').checked ];
+		      document.getElementById('filter-connect').checked, document.getElementById('chorus-connect').checked, true ];
 	masterGain.disconnect();
 	modules.forEach(a=>{ a.disconnect() });
 
