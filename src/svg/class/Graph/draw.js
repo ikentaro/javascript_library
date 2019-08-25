@@ -26,8 +26,8 @@ const draw=(g, x, y)=>{
     }
     str=str.slice(0, -1);
 //    console.log('str :',str);
-    console.log('ymax :', ymax);
-    console.log('ymin :', ymin);
+//    console.log('ymax :', ymax);
+//    console.log('ymin :', ymin);
     
     line.attr({ points: str });
 }

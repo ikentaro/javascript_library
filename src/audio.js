@@ -12,6 +12,8 @@ import setDetuneControl from './audio/setDetuneControl.js'
 import setDelayControl  from './audio/setDelayControl.js'
 import setFeedbackControl from './audio/setFeedbackControl.js'
 import setMixControl from './audio/setMixControl.js'
+import setStateControl from './audio/setStateControl.js'
+import setSmoothingTimeControl from './audio/setSmoothingTimeControl.js'
 
 import setFilterOption  from './audio/setFilterOption.js'
 
@@ -31,6 +33,8 @@ window.audio=window.audio || {
     setFilterOption:  setFilterOption,
     setFeedbackControl: setFeedbackControl,
     setMixControl: setMixControl,
+    setStateControl: setStateControl,
+    setSmoothingTimeControl: setSmoothingTimeControl,
 }
 
 console.log('===== audio module print =====');

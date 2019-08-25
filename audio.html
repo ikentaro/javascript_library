@@ -23,7 +23,7 @@
       <br>
       <!--      現在時刻: <span id="currentTime"></span> <br> -->
       現在時刻: <input id="currentTime" readonly>
-      状態: <input id="state" type="text" readonly><br>
+      状態: <button id="state" type="text"></button><br>
 
       <input id="range-bpm" type="range" min="0" max="200" step="1" value="60"></input>
       BPM : <input id="span-bpm" readonly><br>
@@ -58,6 +58,11 @@
 	<input id="range-chorus-speed" type="range", min="0" max="10" step="0.1" value="5"></input> スピード : <input id="span-chorus-speed" readonly><br>
 	<input id="range-chorus-depth" type="range", min="0" max="0.1" step="0.001" value="0.01"></input> ディプス : <input id="span-chorus-depth" readonly><br>
 	<input id="range-chorus-mix"   type="range", min="0" max="1" step="0.1" value="0.5"></input> Mix : <input id="span-chorus-mix" readonly><br>
+      </div>
+
+      <div>アナライザー 表示<input type="checkbox" id="analyzer-display"></input></div>
+      <div id="analyzer">
+	<input id="range-analyzer-smoothing" type="range", min="0" max="1" step="0.01" value="0.8"> スムーシング時間 <input id="span-smoothing-time" readonly><br>
       </div>
       
       <div>

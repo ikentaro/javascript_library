@@ -1,6 +1,6 @@
 import context from '../context.js'
 
-const analyzer=(node, elem)=>{
+const analyzer=(node, graWave, graFreq)=>{
     const preiod=1.0/context.sampleRate;
     const freqDivN=context.sampleRate/node.fftSize;
 
@@ -15,13 +15,12 @@ const analyzer=(node, elem)=>{
     
 	node.getFloatFrequencyData(freqForm);
 	node.getFloatTimeDomainData(waveForm);
-	elem.draw(timeArray, waveForm);
+	if( graWave!=null ) graWave.draw(timeArray, waveForm);
+	if( graFreq!=null ) graFreq.draw(freqArray, freqForm);
 
 	window.requestAnimationFrame(draw);
     }
-    window.requestAnimationFrame(draw);
-
-    
+    window.requestAnimationFrame(draw);    
 }
 
 export default analyzer;

@@ -5,8 +5,8 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     audio.viewer.baseLatency(document.getElementById('baseLatency'));
     audio.viewer.outputLatency(document.getElementById('outputLatency'));
     audio.viewer.currentTime(document.getElementById('currentTime'));
-    audio.viewer.state(document.getElementById('state'));
-
+    audio.setStateControl(document.getElementById('state'));
+    
     const [ kick, hihat, snare, jazz0, jazz1, jazz2 ] = await Promise.all([ audio.create.decodeAudioData('./wav/kick.wav'),
 									    audio.create.decodeAudioData('./wav/hihat.wav'),
 									    audio.create.decodeAudioData('./wav/snare.wav'),
@@ -22,10 +22,13 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     const chorus=audio.module.chorus();
     const analyzer=audio.create.analyzer();
 
-    svg.config.setPaper(document.getElementById('svg-canvas'));
+    const anaCanvas=document.getElementById('svg-canvas');
+    svg.config.setPaper(anaCanvas);
     console.log(svg.config.paper);
     svg.dump();
-    audio.viewer.analyzer(analyzer, svg.graph());
+    audio.viewer.analyzer(analyzer,
+			  svg.graph(0, 0, 0.5*anaCanvas.clientWidth, anaCanvas.clientHeight, { ymin: -1, ymax: 1 }),
+			  svg.graph(0.5*anaCanvas.clientWidth, 0, 0.5*anaCanvas.clientWidth, anaCanvas.clientHeight, { ymin: -1, ymax: 10}));
     
     [ document.getElementById('delay-connect'), document.getElementById('ppdelay-connect'), document.getElementById('filter-connect'), document.getElementById('chorus-connect') ]
 	.forEach(a=>{ a.addEventListener('change', connectModules); });
@@ -75,39 +78,19 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     audio.setGainControl(chorus.depth, document.getElementById('range-chorus-depth'), document.getElementById('span-chorus-depth'));
     audio.setMixControl(chorus, document.getElementById('range-chorus-mix'), document.getElementById('span-chorus-mix'));
 
+    //*** Analyzer Controller ***//
+    audio.setSmoothingTimeControl(analyzer, document.getElementById("range-analyzer-smoothing"), document.getElementById('span-smoothing-time'));
+    
     //*** Display module setting ***//
-    const filterDisp=document.getElementById('filter-display'), filterDiv=document.getElementById('filter');
-    setDisplayControll(filterDisp, filterDiv);
-    filterDisp.addEventListener('change', ()=>{
-	const flag=filterDisp.checked;
-	if( flag===true ) filterDiv.style.display='block';
-	else filterDiv.style.display='none';
-    });
+    setDisplayControl(document.getElementById('filter-display'), document.getElementById('filter'));
+    setDisplayControl(document.getElementById('delay-display'), document.getElementById('delay'));
+    setDisplayControl(ppdelayDisp=document.getElementById('ppdelay-display'), document.getElementById('ppdelay'));
+    setDisplayControl(document.getElementById('chorus-display'), chorusDiv=document.getElementById('chorus'));
+    setDisplayControl(document.getElementById('analyzer-display'), anaDiv=document.getElementById('analyzer'));
 
-    const delayDisp=document.getElementById('delay-display'), delayDiv=document.getElementById('delay');
-    setDisplayControll(delayDisp, delayDiv);
-    delayDisp.addEventListener('change', ()=>{
-	const flag=delayDisp.checked;
-	if( flag===true ) delayDiv.style.display='block';
-	else delayDiv.style.display='none';
-    });
+    
 
-    const ppdelayDisp=document.getElementById('ppdelay-display'), ppdelayDiv=document.getElementById('ppdelay');
-    setDisplayControll(ppdelayDisp, ppdelayDiv);
-    ppdelayDisp.addEventListener('change', ()=>{
-	const flag=ppdelayDisp.checked;
-	if( flag===true ) ppdelayDiv.style.display='block';
-	else ppdelayDiv.style.display='none';
-    });
-
-    const chorusDisp=document.getElementById('chorus-display'), chorusDiv=document.getElementById('chorus');
-    setDisplayControll(chorusDisp, chorusDiv);
-    chorusDisp.addEventListener('change', ()=>{
-	const flag=chorusDisp.checked;
-	if( flag===true ) chorusDiv.style.display='block';
-	else chorusDiv.style.display='none';
-    });
-        
+    
     const range = document.getElementById('range-bpm'), span  = document.getElementById('span-bpm');
     range.addEventListener('change', setBPM);
     setBPM();
@@ -125,10 +108,16 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     function playSound(buffer, time){ const source=audio.create.bufferSource(); source.buffer=buffer; source.connect(masterGain); source.start(time); }
     function noteLength(){ return 60*4/document.getElementById('range-bpm').value; }
     function setBPM(){ span.value=range.value; }
-    function setDisplayControll(checkbox, elem){
+    function setDisplayControl(checkbox, elem){
 	const flag=checkbox.checked;
 	if( flag===true ) elem.style.display='block';
 	else elem.style.display='none';
+
+	checkbox.addEventListener('change', ()=>{
+	    const flag=checkbox.checked;
+	    if( flag===true ) elem.style.display='block';
+	    else elem.style.display='none';
+	});
     }
     function playDrum(){
 	const eightLength=noteLength()/8.;
