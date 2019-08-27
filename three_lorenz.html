@@ -7,7 +7,9 @@
 
     <link rel="stylesheet" href="three_lorenz.css">
     
-    <script src="../lib/three.js-master/build/three.min.js"></script>
+    <script src="node_modules/three/build/three.min.js"></script>
+    <script src="node_modules/three/examples/js/controls/OrbitControls.js"></script>
+
     <script src="dist/three.js"></script>
     <script src="dist/math.js"></script>
     <script src="js/three_lorenz.js"></script>
@@ -16,9 +18,9 @@
   <body>
     <header>
       <h1>Three.jsラッパー例 ローレンツ方程式</h1>
-      p : <input type="number" value="10" min="0" max="50" step="0.1" id="number-p"></input>
-      r : <input type="number" value="28" min="0" max="50" step="0.1" id="number-r"></input>
-      b : <input type="number" value="2.6" min="0" max="50" step="0.1" id="number-b"></input><br>
+      p : <input type="number" value="15"  min="0" max="50" step="0.1" id="number-p"></input>
+      r : <input type="number" value="24"  min="0" max="50" step="0.1" id="number-r"></input>
+      b : <input type="number" value="2.1" min="0" max="50" step="0.1" id="number-b"></input><br>
       <button id="btn-start">START</button>
     </header>
 

@@ -13,6 +13,8 @@
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.5",
     "regenerator-runtime": "^0.13.2",
+    "snapsvg": "^0.5.1",
+    "three": "^0.107.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   },

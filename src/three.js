@@ -10,6 +10,8 @@ import light    from './three/light.js'
 
 import axis from './three/axis.js'
 
+import orbitControl from './three/orbitControl.js'
+
 window.three=window.three || {
     config: config,
     dump:   dump,
@@ -20,8 +22,14 @@ window.three=window.three || {
     geom:     geom,
     light:    light,
     mesh:   mesh,
-
+    
     axis: axis,
+
+    orbitControl: orbitControl,
+
+    vector3: (x, y, z)=>{ return new THREE.Vector3(x, y, z); },
+    geometory: ()=>{ return new THREE.Geometry(); },
+    line: (geom, material)=>{ return new THREE.Line(geom, material); },
 }
 
 console.log('===== three module dump =====');
