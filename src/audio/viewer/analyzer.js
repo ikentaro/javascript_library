@@ -4,6 +4,17 @@ const analyzer=(node, graWave, graFreq)=>{
     const preiod=1.0/context.sampleRate;
     const freqDivN=context.sampleRate/node.fftSize;
 
+    if( graWave!=null ){
+	graWave.setXTitle('時間 [s]');
+	graWave.setYLabel(0.5);
+	graWave.setXLabel(0.01);
+    }
+    if( graFreq!=null ){
+	graFreq.setXTitle('周波数 [Hz]');
+	graFreq.setYLabel(25);
+	graFreq.setXLabel(4000);
+    }
+    
     const draw=()=>{
 	const waveForm =new Float32Array(node.fftSize);
 	const freqForm =new Float32Array(node.frequencyBinCount);

@@ -24,12 +24,10 @@ window.addEventListener('DOMContentLoaded', async ()=>{
 
     const anaCanvas=document.getElementById('svg-canvas');
     svg.config.setPaper(anaCanvas);
-    console.log(svg.config.paper);
-    svg.dump();
-    audio.viewer.analyzer(analyzer,
-			  svg.graph(0, 0, 0.5*anaCanvas.clientWidth, anaCanvas.clientHeight, { ymin: -1, ymax: 1 }),
-			  svg.graph(0.5*anaCanvas.clientWidth, 0, 0.5*anaCanvas.clientWidth, anaCanvas.clientHeight, { ymin: -1, ymax: 10}));
-    
+    const graWave=svg.graph(0, 0, 0.5*anaCanvas.clientWidth, anaCanvas.clientHeight, { ymin: -1, ymax: 1, xmin: 0, xmax: analyzer.fftSize/audio.context.sampleRate });
+    const graFreq=svg.graph(0.5*anaCanvas.clientWidth, 0, 0.5*anaCanvas.clientWidth, anaCanvas.clientHeight, { ymin: -200, ymax: -30, xmin:0, xmax: audio.context.sampleRate/2.0 });
+    audio.viewer.analyzer(analyzer, graWave, graFreq);
+
     [ document.getElementById('delay-connect'), document.getElementById('ppdelay-connect'), document.getElementById('filter-connect'), document.getElementById('chorus-connect') ]
 	.forEach(a=>{ a.addEventListener('change', connectModules); });
 

@@ -4,7 +4,10 @@ const draw=(g, x, y)=>{
     const x0=g.disp.x.animVal.value;
     const y0=g.disp.y.animVal.value+height;
     const line=g.line(0);
-    const xmax=Math.max(...x), xmin=Math.min(...x), ymax=Math.max(...y), ymin=Math.min(...y);
+    const xmax=g.xmax==null ? Math.max(...x) : g.xmax;
+    const xmin=g.xmin==null ? Math.min(...x) : g.xmin;
+    const ymax=g.ymax==null ? Math.max(...y) : g.ymax;
+    const ymin=g.ymin==null ? Math.min(...y) : g.ymin;
     const scaleX=width/(xmax-xmin);
     const scaleY=ymax===ymin ? 0 : height/(ymax-ymin);
     let str='';
@@ -19,8 +22,10 @@ const draw=(g, x, y)=>{
     }
     else{
 	for( let i=0; i<x.length; i++ ){
-	    const xval=x0+scaleX*(x[i]-xmin);
-	    const yval=y0-scaleY*(y[i]-ymin);
+	    if( y[i]<ymin ) y[i]=ymin;
+	    if( y[i]>ymax ) y[i]=ymax;
+	    let xval=x0+scaleX*(x[i]-xmin);
+	    let yval=y0-scaleY*(y[i]-ymin);
 	    str+=xval+','+yval+',';
 	}
     }

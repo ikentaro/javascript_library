@@ -5,7 +5,7 @@
     <title>Three.js Wrapper Library ローレンツ・アトラクタ</title>
     <meta name="description" content="Three.jsのラッパーライブラリのサンプル.1 ローレンツアトラクタ シミュレーション">
 
-    <link rel="stylesheet" href="three_test.css">
+    <link rel="stylesheet" href="three_lorenz.css">
     
     <script src="../lib/three.js-master/build/three.min.js"></script>
     <script src="dist/three.js"></script>
@@ -16,12 +16,10 @@
   <body>
     <header>
       <h1>Three.jsラッパー例 ローレンツ方程式</h1>
-      <form>
-	p : <input type="number" value="1" min="0" max="2" step="0.1" id="number-p"></input>
-	r : <input type="number" value="1" min="0" max="2" step="0.1" id="number-r"></input>
-	b : <input type="number" value="1" min="0" max="2" step="0.1" id="number-b"></input><br>
-	<button id="btn-start">START</button>
-      </form>
+      p : <input type="number" value="10" min="0" max="50" step="0.1" id="number-p"></input>
+      r : <input type="number" value="28" min="0" max="50" step="0.1" id="number-r"></input>
+      b : <input type="number" value="2.6" min="0" max="50" step="0.1" id="number-b"></input><br>
+      <button id="btn-start">START</button>
     </header>
 
     <main>

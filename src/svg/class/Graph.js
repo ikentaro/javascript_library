@@ -1,10 +1,16 @@
 import draw from './Graph/draw.js'
+import setXTitle from './Graph/setXTitle.js'
+import setYLabel from './Graph/setYLabel.js'
+import setXLabel from './Graph/setXLabel.js'
 
 const Graph=class{
-    constructor(group){
+    constructor(group, options){
 	this._g=group;
 	const width=this.disp.width.animVal.value, height=this.disp.height.animVal.value, x0=this.disp.x.animVal.value, y0=this.disp.y.animVal.value;
-	this._lines=[ this._g.polyline(x0, y0+0.5*height, x0+width, y0+0.5*height).attr({ strokeWidth:2, stroke: 'blue', fill: 'none' }) ];	
+	this._lines=[ this._g.polyline(x0, y0+0.5*height, x0+width, y0+0.5*height).attr({ strokeWidth:2, stroke: 'blue', fill: 'none' }) ];
+
+	for( const [ k, v ] of Object.entries(options) )  if( this[k]==null ) this[k]=v;
+	console.log(this);
     }
     
     get disp(){ return [ ...this.node.children].find(a=> a.tagName==='rect'); }
@@ -12,6 +18,10 @@ const Graph=class{
     
     line(index=0){ return this._lines[index]; }
     draw(x, y){ draw(this, x, y); }
+    setXTitle(title){ setXTitle(this, title); }
+
+    setYLabel(div){ setYLabel(this, div); }
+    setXLabel(div){ setXLabel(this, div); }
 }
 
 export default Graph;
