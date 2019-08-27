@@ -1,4 +1,5 @@
 const trajectories=[];
+let color=0;
 
 window.addEventListener('load', ()=>{
     console.log('===== Three.js Wrapper lorenz START  =====');
@@ -21,15 +22,19 @@ window.addEventListener('load', ()=>{
 	    const geom=three.geometory();
 	    geom.vertices.push(three.vector3(ball.position.x, ball.position.y, ball.position.z));
 	    geom.vertices.push(three.vector3(next[0], next[1], next[2]));
-	    const line=three.line(geom, three.material.basic({ color: 'silver' }));
+	    
+	    const line=three.line(geom, three.material.basic({ color: 'hsl('+color+',100%,50%)' }));
 	    ball.position.set(next[0], next[1], next[2]);
 	    three.render();
 
 	    three.config.scene.add(line);
 	    trajectories.push(line);
-//	    console.log(Math.sqrt(next[0]*next[0]+next[1]*next[1]+next[2]*next[2]));
+	    
 	    if( Math.sqrt(next[0]*next[0]+next[1]*next[1]+next[2]*next[2])<100 ) window.requestAnimationFrame(render);
 	    else console.log('> Calculation STOP');
+
+	    color++;
+	    if( color>360 ) color=0;
 	}
 	window.requestAnimationFrame(render);
     });
