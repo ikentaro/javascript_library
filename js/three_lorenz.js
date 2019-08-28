@@ -14,6 +14,8 @@ window.addEventListener('load', ()=>{
 
     document.getElementById('btn-start').addEventListener('click', ()=>{
 	console.log('===== start click =====');
+	three.orbitControl();
+	
 	const [ p, r, b ]=getParam();
 	const lorenzFunc=(x, y, z)=>{ return [ -p*x+p*y,  -x*z+r*x-y,  x*y-b*z  ]; }
 
@@ -40,7 +42,7 @@ window.addEventListener('load', ()=>{
     });
     
     three.render();    
-    three.orbitControl();
+
     
     function getParam(){
 	const p=Number(document.getElementById('number-p').value);
@@ -50,6 +52,5 @@ window.addEventListener('load', ()=>{
 	return [ p, r, b ];
     }
 
-//    three.config.dump();
     console.log('===== Three.js Wrapper lorenz FINISH =====');
 });
