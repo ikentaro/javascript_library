@@ -4,18 +4,21 @@ let resultMap;
 
 window.addEventListener('DOMContentLoaded', ()=>{
     console.log('===== Mandelbrot START  =====');
-    const can=document.getElementById('svg-canvas');
-    const width=can.clientWidth, height=can.clientHeight;
+    const can=document.getElementById('canvas');
+    const ctx=can.getContext('2d');
+    ctx.fillStyle='blue';
+    
+    const width=can.width, height=can.height;
     const scaleF=width<height ? width/4 : height/4;
 //    console.log(width, height, scaleF);
-
-    svg.config.setPaper(can);
-    
+//    svg.config.setPaper(can);
+  
     document.getElementById('btn-calc').addEventListener('click', ()=>{	
 	const inN=document.getElementById('input-n');
 	inN.min=inN.value;
 	const startTime=performance.now();
 	console.log('>>> N', inN.value);
+	console.log('>>> scale : ', scaleF);
 	const n=Number(inN.value);
 	const dt=4.0/n;
 	
@@ -27,9 +30,10 @@ window.addEventListener('DOMContentLoaded', ()=>{
 		    const result=isMandelbrot(math.complex(x,y));
 		    tmpArr.push(result);
 		    if( result===true ){
-			const x0=0.5*width+scaleF*x;
-			const y0=0.5*height+scaleF*y;
-			svg.config.paper.rect(x0, y0, dt*scaleF, dt*scaleF).attr({ fill: 'blue' });
+			const x0=0.5*width+x*scaleF;
+			const y0=0.5*height+y*scaleF;
+			ctx.fillRect(x0, y0, dt*scaleF, dt*scaleF);
+//			svg.config.paper.rect(x0, y0, dt*scaleF, dt*scaleF).attr({ fill: 'blue' });
 		    }
 		}
 		tmpMap.push(tmpArr);
