@@ -86,9 +86,6 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     setDisplayControl(document.getElementById('chorus-display'), chorusDiv=document.getElementById('chorus'));
     setDisplayControl(document.getElementById('analyzer-display'), anaDiv=document.getElementById('analyzer'));
 
-    
-
-    
     const range = document.getElementById('range-bpm'), span  = document.getElementById('span-bpm');
     range.addEventListener('change', setBPM);
     setBPM();
