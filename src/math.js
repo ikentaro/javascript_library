@@ -32,6 +32,8 @@ import solver   from './math/solver.js'
 import rungeKutta from './math/rungeKutta.js'
 import eulr from './math/eulr.js'
 
+import random from './math/random.js'
+
 window.math=window.math || {
     minus: minus,
     reverse: reverse,
@@ -60,6 +62,7 @@ window.math=window.math || {
 
     rungeKutta: rungeKutta,
     eulr: eulr,
+    random: random,
     
     vector: (...args)=>{ return new Vector(...args); },
     matrix: (...args)=>{ return new Matrix(...args); },
