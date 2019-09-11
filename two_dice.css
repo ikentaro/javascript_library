@@ -1,0 +1,5 @@
+:root { --background-color: gray; }
+
+header { height: 20%; }
+main   { height: 75%; }
+footer { height: 5%;  }

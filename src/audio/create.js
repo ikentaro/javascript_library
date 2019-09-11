@@ -15,6 +15,8 @@ const create={
     
     analyser: ()=>{ return context.createAnalyser(); },
     analyzer: ()=>{ return context.createAnalyser(); },
+
+    mediaStreamSource: (stream)=>{ return context.createMediaStreamSource(stream); },
 }
 
 export default create;

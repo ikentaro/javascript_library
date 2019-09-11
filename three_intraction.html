@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Three.js Wrapper Library 3体問題</title>
+    <meta name="description" content="Three.jsのラッパーライブラリのサンプル.1 3体問題 シミュレーション">
+
+    <link rel="stylesheet" href="three_intraction.css">
+    
+    <script src="node_modules/three/build/three.min.js"></script>
+    <script src="node_modules/three/examples/js/controls/OrbitControls.js"></script>
+
+    <script src="dist/three.js"></script>
+    <script src="dist/math.js"></script>
+<!--    <script src="js/three_interaction.js"></script> -->
+  </head>
+  
+  <body>
+    <header>
+      <h1>Three.jsラッパー例 3体問題</h1>
+      (x, y, z)=(<input type="number" min="0" max="50" value="1" id="number-x0"></input>,
+                 <input type="number" min="0" max="50" value="1" id="number-y0"></input>,
+                 <input type="number" min="0" max="50" value="1" id="number-z0"></input>)<br>
+      (x, y, z)=(<input type="number" min="0" max="50" value="1" id="number-x1"></input>,
+                 <input type="number" min="0" max="50" value="1" id="number-y1"></input>,
+                 <input type="number" min="0" max="50" value="1" id="number-z1"></input>)<br>
+      (x, y, z)=(<input type="number" min="0" max="50" value="1" id="number-x2"></input>,
+                 <input type="number" min="0" max="50" value="1" id="number-y2"></input>,
+                 <input type="number" min="0" max="50" value="1" id="number-z2"></input>)<br>
+		 
+      <button id="btn-start">START</button>
+    </header>
+
+    <main>
+      <div id="canvas">
+      </div>
+    </main>
+    
+    <footer>
+    </footer>
+  </body>
+</html>

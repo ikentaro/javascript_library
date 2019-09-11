@@ -6,7 +6,8 @@ module.exports={
 	svg: './src/svg.js',
 	math: './src/math.js',
 	three: './src/three.js',
-	audio: './src/audio.js'
+	audio: './src/audio.js',
+	doc:   './src/doc.js'
     },
 
     output: {

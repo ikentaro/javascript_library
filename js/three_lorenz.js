@@ -12,8 +12,11 @@ window.addEventListener('load', ()=>{
     three.light.ambient();
     three.light.directional();
 
+    document.getElementById('number-x').addEventListener('change', setPos);
+    document.getElementById('number-y').addEventListener('change', setPos);
+    document.getElementById('number-z').addEventListener('change', setPos);
     document.getElementById('btn-start').addEventListener('click', ()=>{
-	console.log('===== start click =====');
+//	console.log('===== start click =====');
 	three.orbitControl();
 	
 	const [ p, r, b ]=getParam();
@@ -43,14 +46,13 @@ window.addEventListener('load', ()=>{
     
     three.render();    
 
-    
-    function getParam(){
-	const p=Number(document.getElementById('number-p').value);
-	const r=Number(document.getElementById('number-r').value);
-	const b=Number(document.getElementById('number-b').value);
-	console.log('p : ',p, ' r : ', r, ' b : ',b);
-	return [ p, r, b ];
+    function setPos(){
+	const pos=[ Number(document.getElementById('number-x').value), Number(document.getElementById('number-y').value), Number(document.getElementById('number-z').value) ];
+	ball.position.set(pos[0], pos[1], pos[2]);
+	three.render();
     }
+
+    function getParam(){ return [ Number(document.getElementById('number-p').value), Number(document.getElementById('number-r').value), Number(document.getElementById('number-b').value) ]; }
 
     console.log('===== Three.js Wrapper lorenz FINISH =====');
 });

@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', async ()=>{
-    console.log('===== audio test START  =====');
+    console.log('===== asudio test START  =====');
 
     document.getElementById('sampleRate').innerHTML=audio.context.sampleRate;
     audio.viewer.baseLatency(document.getElementById('baseLatency'));
@@ -7,12 +7,10 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     audio.viewer.currentTime(document.getElementById('currentTime'));
     audio.setStateControl(document.getElementById('state'));
     
-    const [ kick, hihat, snare, jazz0, jazz1, jazz2 ] = await Promise.all([ audio.create.decodeAudioData('./wav/kick.wav'),
-									    audio.create.decodeAudioData('./wav/hihat.wav'),
-									    audio.create.decodeAudioData('./wav/snare.wav'),
-									    audio.create.decodeAudioData('./music/CloserToJazz.mp3'),
-									    audio.create.decodeAudioData('./music/OkeyDokeySmokey.mp3'),
-									    audio.create.decodeAudioData('./music/StandardJazzBars.mp3') ]);
+    const [ jazz0, jazz1, jazz2 ] = await Promise.all([ audio.create.decodeAudioData('./music/CloserToJazz.mp3'),
+							audio.create.decodeAudioData('./music/OkeyDokeySmokey.mp3'),
+							audio.create.decodeAudioData('./music/StandardJazzBars.mp3') ]);
+    
     document.getElementById('play').addEventListener('click', play);
 
     const masterGain=audio.create.gain();
@@ -86,14 +84,9 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     setDisplayControl(document.getElementById('chorus-display'), chorusDiv=document.getElementById('chorus'));
     setDisplayControl(document.getElementById('analyzer-display'), anaDiv=document.getElementById('analyzer'));
 
-    const range = document.getElementById('range-bpm'), span  = document.getElementById('span-bpm');
-    range.addEventListener('change', setBPM);
-    setBPM();
-
     function play(){
 	const option=[ ...document.getElementById('sound-src')].filter(a=> a.selected)[0];
-	if( option.value==='drum0' ) playDrum();
-	else if( option.value==='jazz0' ) playSound(jazz0, audio.context.currentTime+0.01);
+	if( option.value==='jazz0' ) playSound(jazz0, audio.context.currentTime+0.01);
 	else if( option.value==='jazz1' ) playSound(jazz1, audio.context.currentTime+0.01);
 	else if( option.value==='jazz2' ) playSound(jazz2, audio.context.currentTime+0.01);
 	else alert('音源が見つかりません');
@@ -101,8 +94,6 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     }
     
     function playSound(buffer, time){ const source=audio.create.bufferSource(); source.buffer=buffer; source.connect(masterGain); source.start(time); }
-    function noteLength(){ return 60*4/document.getElementById('range-bpm').value; }
-    function setBPM(){ span.value=range.value; }
     function setDisplayControl(checkbox, elem){
 	const flag=checkbox.checked;
 	if( flag===true ) elem.style.display='block';
@@ -113,17 +104,6 @@ window.addEventListener('DOMContentLoaded', async ()=>{
 	    if( flag===true ) elem.style.display='block';
 	    else elem.style.display='none';
 	});
-    }
-    function playDrum(){
-	const eightLength=noteLength()/8.;
-	const startTime=audio.context.currentTime+0.01;
-
-	playSound(kick, startTime);
-	playSound(kick, startTime+4*eightLength);
-
-	playSound(kick, startTime+2*eightLength);
-	playSound(kick, startTime+6*eightLength);
-	for( let i=0; i<8; i++ ) playSound(hihat, startTime+i*eightLength);
     }
     
     console.log('===== audio test FINISH =====');
