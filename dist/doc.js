@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("window.doc = window.doc || {};\nconsole.log('===== doc module print =====');\nconsole.log(window.doc);\n\n//# sourceURL=webpack:///./src/doc.js?");
+eval("window.doc = window.doc || {\n  create: function create(tag) {\n    document.createElement(tag);\n  }\n};\nconsole.log('===== doc module print =====');\nconsole.log(window.doc);\n\n//# sourceURL=webpack:///./src/doc.js?");
 
 /***/ })
 

@@ -28,3 +28,8 @@ AnalyzerNode display uses Snap.svg.js
 Music samples uses Creative Common Library
 
 In this page use creative commons by-lisence music ![by-lisence](https://komtmt.files.wordpress.com/2015/04/by.png?w=150&h=52)
+
+## reference
+### math module
+
+### audio module

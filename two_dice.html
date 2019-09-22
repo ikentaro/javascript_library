@@ -6,17 +6,25 @@
     <meta name="description" content="1〜6のサイコロと6のみのサイコロをN回振って見るシュミレーション">
     <link rel="stylesheet" href="default.css">
     <link rel="stylesheet" href="two_dice.css">
+
+    <script src="../lib/Snap.svg-0.5.1/dist/snap.svg-min.js"></script>
+    <script src="dist/math.js"></script>
+    <script src="dist/svg.js"></script>
+    <script src="js/two_dice.js"></script>
   </head>
 
   <body>
     <header>
       <h1>2つのサイコロシミュレーション</h1>
       <p>普通のサイコロと1~n(<6)まであるサイコロをN回振ってでた目の度数分布を作る</p>
-      サイコロBの最大の値: <input type="number" min="1" max="5" value="1" id="input-n"></input>
-			       試行回数: <input type="number" min="1" max="5" value="1" id="input-loop"></input>  
+      サイコロBの最大の値: <input type="number" min="1" max="5" value="1" id="input-n"></input><br>
+      試行回数: <input type="number" min="1" max="10000000000" value="100" id="input-loop"></input><br>
+      サイコロBを振る割合: <input type="number" min="0" max="100" value="50" id="input-ratio"></input><br>
+      <input type="button" id="btn-exec" value="実行"></input>
     </header>
 
     <main>
+      <div id="svg-canvas"></div>
     </main>
     
     <footer>

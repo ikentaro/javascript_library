@@ -3,3 +3,5 @@
 header { height: 20%; }
 main   { height: 75%; }
 footer { height: 5%;  }
+
+#svg-canvas { height: 100%; width: 100%; }

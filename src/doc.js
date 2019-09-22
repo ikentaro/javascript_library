@@ -1,5 +1,5 @@
 window.doc=window.doc || {
-    create: (tag)=>{ document.createElement(tag),
+    create: (tag)=>{ document.createElement(tag) },
 }
 
 console.log('===== doc module print =====');
