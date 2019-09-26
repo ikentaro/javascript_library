@@ -5,10 +5,8 @@ const draw=(h)=>{
     const y0    =h.disp.y.animVal.value+height;
 
     const max=h._bins.reduce((max, a)=> max>a.content ? max : a.content, 0);
-//    console.log(x0, y0, width, height, 'max', max);
     const scaleY=height/(1.1*(max+Math.sqrt(max)));
     const scaleX=width/(h._bins.length-1);
-//    console.log(scaleX, scaleY);
     
     for( let i=0; i<h._bins.length-1; i++ ){	
 	const barLength=h._bins[i].content*scaleY;
@@ -30,11 +28,13 @@ const draw=(h)=>{
 	h._labelY.forEach(a=> a.remove());
 	h._labelY=[];
     }
+    for( let l=0; l<1.1*(max+Math.sqrt(max)); l+=grid ){ h._labelY.push(h._g.text(x0, y0-scaleY*l, String(l)).attr({textAnchor:"end", dominantBaseline:"middle"})); }
 
-//    console.log('max', max);
-    for( let l=0; l<1.1*(max+Math.sqrt(max)); l+=grid ){
-//	console.log('label', l);
-	h._labelY.push(h._g.text(x0, y0-scaleY*l, String(l)).attr({textAnchor:"end", dominantBaseline:"middle"}));
+    const entries=h._bins.reduce((sum, a)=> sum+a.content, 0);
+    if( h._stat==null ) h._stat=h._g.text(x0+width, y0-height, `Entries : ${entries}`).attr({textAnchor: "end", domainantBaseline:'hanging'});
+    else{
+	h._stat.remove();
+	h._stat=h._g.text(x0+width, y0-height, `Entries : ${entries}`).attr({textAnchor: "end", domainantBaseline:'hanging'});
     }
 }
 
@@ -45,11 +45,9 @@ function getGrid(max){
     const isGood=(grid)=>{ return 5<max/grid && max/grid<=12.5; };
     
     while( !isGood(grid) ){
-//	console.log('grid', grid);
 	if( Number.isInteger(grid/2)===false ) grid*=2;
 	else if( isGood(grid*2) ){ grid*=2; break; }
 	else grid*=5;
     }
-//    console.log('grid :',grid);
     return grid;
 }
