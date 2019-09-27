@@ -56,3 +56,5 @@ In this page use creative commons by-lisence music ![by-lisence](https://komtmt.
 ### math module
 
 ### audio module
+[Web Audio Apps | g200kg Music & Software](https://www.g200kg.com/jp/webaudio/)
+[WEB SOUNDER - Web Audio API 解説](https://weblike-curtaincall.ssl-lolipop.jp/portfolio-web-sounder/)
