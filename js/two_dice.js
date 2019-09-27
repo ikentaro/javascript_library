@@ -12,8 +12,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	    else                                     hist.fill(Math.floor(max*math.random.lgc.zeroToOne()+1));
 	}
 
-//	hist.dump();
 	hist.draw();
     });
+
+    document.getElementById('btn-reset').addEventListener('click', ()=>{ hist.reset(); });
     console.log('===== Two Dice FINISH =====');
 });

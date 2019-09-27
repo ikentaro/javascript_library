@@ -2,6 +2,7 @@ import init from './Hist/init.js';
 import draw from './Hist/draw.js';
 import fill from './Hist/fill.js';
 import dump from './Hist/dump.js';
+import reset from './Hist/reset.js';
 
 const Hist=class{
     constructor(data, label, group, options){
@@ -15,6 +16,8 @@ const Hist=class{
     
     draw(options){ draw(this); }
     fill(label, weight=1.0){ fill(this, label, weight); }
+
+    reset(){ reset(this); }
     dump(){ dump(this); }
 }
 
