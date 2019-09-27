@@ -53,8 +53,14 @@ Music samples uses Creative Common Library
 In this page use creative commons by-lisence music ![by-lisence](https://komtmt.files.wordpress.com/2015/04/by.png?w=150&h=52)
 
 ## reference
+
 ### math module
 
 ### audio module
 [Web Audio Apps | g200kg Music & Software](https://www.g200kg.com/jp/webaudio/)  
 [WEB SOUNDER - Web Audio API 解説](https://weblike-curtaincall.ssl-lolipop.jp/portfolio-web-sounder/)
+
+### three.js explanation
+[three.js - JavaScript 3D library](https://threejs.org/)  
+[Three.js入門サイト - ICS MDEIA](https://ics.media/tutorial-three/)  
+[three.js wiki - アットウィキ](https://w.atwiki.jp/threejs/)
