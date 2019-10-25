@@ -1,0 +1,6 @@
+header { height: 20%; }
+main   { height: 75%; }
+footer { height: 5%; }
+
+:root{ --background-color: silver; }
+header, footer { background: var(--background-color); }

@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ガウス分布</title>
+    <meta name="description" content="乱数シュミレーションボックスミュラー法、ガウス分布">
+    <link rel="stylesheet" href="default.css">
+    <link rel="stylesheet" href="two_dice.css">
+
+    <script src="../lib/Snap.svg-0.5.1/dist/snap.svg-min.js"></script>
+    <script src="dist/math.js"></script>
+    <script src="dist/svg.js"></script>
+    <script src="js/gauss.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>乱数のシュミレーションガウス分布</h1>
+      中心値: <input type="number"   min="-100" max="100"    value="0"   id="input-mean"> </input><br>
+      &sigma; <input type="number"   min="1"    max="100"    value="10"  id="input-sigma"></input><br>
+      試行回数: <input type="number" min="0" max="1000000" value="100" id="input-num">  </input><br>
+      <input type="button" id="btn-exec"  value="実行">    </input>
+      <input type="button" id="btn-reset" value="リセット"></input>
+    </header>
+
+    <main>
+      <div id="svg-canvas"></div>
+    </main>
+    
+    <footer>
+    </footer>
+  </body>
+</html>

@@ -6,6 +6,7 @@ const LGC=class{
 	this._seed = seed;
     }
 
+    get seed(){ return this._seed; }
     setSeed(seed){
 	if( IsInterger(seed)!==true ) throw new Error('!!!!! LGC.setSeed seed should be integer !!!!!');
 	if( seed<0 || this._max<seed ) throw new Error(`!!!!! LGC.setSeed Invalid Range ${seed} [0. ${this._seed}]`);

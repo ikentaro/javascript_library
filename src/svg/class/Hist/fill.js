@@ -1,6 +1,6 @@
 const fill=(h, label, weight=1.0)=>{
     const bin=h._bins.find(a=> a.label==label);
-
+    
     if( bin!=null ){ bin.content++; }
     else{
 //	console.log(`bin:${label}が見つかりませんでした`);

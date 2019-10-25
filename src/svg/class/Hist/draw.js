@@ -17,6 +17,7 @@ const draw=(h)=>{
 	else h._bins[i].errbar.attr({ 'x1': x0+(i+0.5)*scaleX, 'y1': barPos-sqrtContLen, 'x2': x0+(i+0.5)*scaleX, 'y2': barPos+sqrtContLen });
     }
     const grid=getGrid(1.1*max);
+//    console.log(grid);
     
     if( h._labelY==null ) h._labelY=[];
     else{ h._labelY.forEach(a=> a.remove()); h._labelY=[]; }
@@ -30,13 +31,8 @@ const draw=(h)=>{
 export default draw;
 
 function getGrid(max){
-    let grid=5;
-    const isGood=(grid)=>{ return 5<max/grid && max/grid<=12.5; };
-    
-    while( !isGood(grid) ){
-	if( Number.isInteger(grid/2)===false ) grid*=2;
-	else if( isGood(grid*2) ){ grid*=2; break; }
-	else grid*=5;
-    }
-    return grid;
+    if( max<10  ) return 1;
+    if( max<50  ) return 5;
+    if( max<100 ) return 10;
+    return Math.round(max/10);
 }

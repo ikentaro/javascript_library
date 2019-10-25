@@ -8,7 +8,7 @@ const Hist=class{
     constructor(data, label, group, options){
         this._g=group;
 //	const width=this.disp.width.animVal.value, height=this.disp.height.animVal.value, x0=this.disp.x.animVal.value, y0=this.disp.y.animVal.value;
-	init(this, data, label);
+	init(this, data, label, options.labelWidth);
     }
 
     get disp(){ return [ ...this.node.children].find(a=>a.tagName==='rect'); }

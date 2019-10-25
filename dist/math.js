@@ -538,7 +538,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Com
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _random_LCG_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./random/LCG.js */ \"./src/math/random/LCG.js\");\n/* harmony import */ var _random_dump_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./random/dump.js */ \"./src/math/random/dump.js\");\n\n\nvar lgc = new _random_LCG_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](1664525, 1013904223, Math.pow(2.0, 32));\nvar random = {\n  get lgc() {\n    return lgc;\n  },\n\n  dump: function dump() {\n    Object(_random_dump_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(lgc);\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (random);\n\n//# sourceURL=webpack:///./src/math/random.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _random_LCG_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./random/LCG.js */ \"./src/math/random/LCG.js\");\n/* harmony import */ var _random_dump_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./random/dump.js */ \"./src/math/random/dump.js\");\n/* harmony import */ var _random_gauss_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./random/gauss.js */ \"./src/math/random/gauss.js\");\n\n\n\nvar lgc = new _random_LCG_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](1664525, 1013904223, Math.pow(2.0, 32));\nvar engine = lgc;\nvar random = {\n  get lgc() {\n    return lgc;\n  },\n\n  zeroToOne: function zeroToOne() {\n    return engine.zeroToOne();\n  },\n  dump: function dump() {\n    Object(_random_dump_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(engine);\n  },\n  gauss: function gauss(mean, sigma) {\n    return Object(_random_gauss_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(engine, mean, sigma);\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (random);\n\n//# sourceURL=webpack:///./src/math/random.js?");
 
 /***/ }),
 
@@ -550,7 +550,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ran
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar LGC =\n/*#__PURE__*/\nfunction () {\n  function LGC(a, c, max) {\n    var seed = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;\n\n    _classCallCheck(this, LGC);\n\n    this._a = a;\n    this._c = c;\n    this._max = max;\n    this._seed = seed;\n  }\n\n  _createClass(LGC, [{\n    key: \"setSeed\",\n    value: function setSeed(seed) {\n      if (IsInterger(seed) !== true) throw new Error('!!!!! LGC.setSeed seed should be integer !!!!!');\n      if (seed < 0 || this._max < seed) throw new Error(\"!!!!! LGC.setSeed Invalid Range \".concat(seed, \" [0. \").concat(this._seed, \"]\"));\n      this._seed = seed;\n    }\n  }, {\n    key: \"zeroToOne\",\n    value: function zeroToOne() {\n      this._seed = (this._a * this._seed + this._c) % this._max;\n      return this._seed / this._max;\n    }\n  }]);\n\n  return LGC;\n}();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (LGC);\n\n//# sourceURL=webpack:///./src/math/random/LCG.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }\n\nfunction _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }\n\nvar LGC =\n/*#__PURE__*/\nfunction () {\n  function LGC(a, c, max) {\n    var seed = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;\n\n    _classCallCheck(this, LGC);\n\n    this._a = a;\n    this._c = c;\n    this._max = max;\n    this._seed = seed;\n  }\n\n  _createClass(LGC, [{\n    key: \"setSeed\",\n    value: function setSeed(seed) {\n      if (IsInterger(seed) !== true) throw new Error('!!!!! LGC.setSeed seed should be integer !!!!!');\n      if (seed < 0 || this._max < seed) throw new Error(\"!!!!! LGC.setSeed Invalid Range \".concat(seed, \" [0. \").concat(this._seed, \"]\"));\n      this._seed = seed;\n    }\n  }, {\n    key: \"zeroToOne\",\n    value: function zeroToOne() {\n      this._seed = (this._a * this._seed + this._c) % this._max;\n      return this._seed / this._max;\n    }\n  }, {\n    key: \"seed\",\n    get: function get() {\n      return this._seed;\n    }\n  }]);\n\n  return LGC;\n}();\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (LGC);\n\n//# sourceURL=webpack:///./src/math/random/LCG.js?");
 
 /***/ }),
 
@@ -563,6 +563,18 @@ eval("__webpack_require__.r(__webpack_exports__);\nfunction _classCallCheck(inst
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\nvar dump = function dump(g) {\n  console.log('===== random dump =====');\n  console.log('Seed :', g._seed);\n  console.log('=======================');\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (dump);\n\n//# sourceURL=webpack:///./src/math/random/dump.js?");
+
+/***/ }),
+
+/***/ "./src/math/random/gauss.js":
+/*!**********************************!*\
+  !*** ./src/math/random/gauss.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nvar gauss = function gauss(engine, mean, sigma) {\n  var a1 = engine.zeroToOne();\n  var a2 = engine.zeroToOne();\n  return Math.sqrt(-2 * Math.log(a1)) * sigma * Math.sin(2 * Math.PI * a2) + mean;\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (gauss);\n\n//# sourceURL=webpack:///./src/math/random/gauss.js?");
 
 /***/ }),
 
