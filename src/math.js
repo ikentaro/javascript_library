@@ -30,9 +30,10 @@ import integral from './math/integral.js'
 import solver   from './math/solver.js'
 
 import rungeKutta from './math/rungeKutta.js'
-import eulr from './math/eulr.js'
+import eulr       from './math/eulr.js'
 
 import random from './math/random.js'
+import fit    from './math/fit.js'
 
 window.math=window.math || {
     minus: minus,
@@ -63,6 +64,7 @@ window.math=window.math || {
     rungeKutta: rungeKutta,
     eulr: eulr,
     random: random,
+    fit:    fit,
     
     vector: (...args)=>{ return new Vector(...args); },
     matrix: (...args)=>{ return new Matrix(...args); },

@@ -19,6 +19,11 @@ const Hist=class{
 
     reset(){ reset(this); }
     dump(){ dump(this); }
+
+    binContent(i){ return this._bins[i].content; }
+    binLabel(i)  { return this._bins[i].label; }
+    contentArray(){ return this._bins.map(a=> a.content).slice(0, -1); }
+    labelArray()  { return this._bins.map(a=> a.label).slice(0, -1); }
 }
 
 export default Hist;
