@@ -29,12 +29,25 @@ This module is mathmatiral calculation helper for JavaScript.
 This library includes Complex, Liner Algebra (Vector and Matrix) and numerical differentical and integral.  
 and also this library includes some simple solver for non-linear equation and differential equattion.
 
+#### Linear Algebra
+`Matrix` and `Vector` is class.
+These class implement four calculus operator, which are called at `math.add`, `math.sub`, `math.mul`, `math.div`.
+These operator throw custum exception when you input incorrect value.
+
+#### Complex
+`Complex` is class.
+Some functions are adopted for complex, for example, `math.sin`, `math.exp` and so on.
+
+#### functions
+Some functions are wrapped by myself.
+If you input number use standerd 'Math' module.
+If you input Complex class use return Complex value, which use my implemention.
+
 ### SVG module
 This module is Graph/Hist utility using Snap.svg.
 
 ### 3DCG(WebGL) module
 This moudle is three.js wrapper moudle.
-
 
 ## samples
 ### test.html
