@@ -9,9 +9,9 @@ const simplex=(data, func, initpar)=>{
     const errarr=data.err;
 
     if( typeof func!=='function' ) throw new Error('fit.simplexの第二引数はfunctionのみです');
-    if( initpar==null ) initpar=[ ...new Array(func.length-1).keys() ].map(a=>1);
+//    console.log('===== fit.simplex START =====');
     
-    console.log('===== fit.simplex START =====');
+    if( initpar==null ) initpar=[ ...new Array(func.length-1).keys() ].map(a=>1);    
 
     const simplex=[ { param: initpar, chi2: calcChi2(...initpar) } ];
     for( let i=0; i<initpar.length; i++ ){
@@ -20,7 +20,8 @@ const simplex=(data, func, initpar)=>{
     }
     simplex.sort(sortFunc);
     while( next()>simplexMinSize ){}
-    console.log(simplex[0].param);
+//    console.log(simplex[0].param);
+    return { param: simplex[0].param, chi2: simplex[0].chi2, 'function': (x)=> func(x, ...simplex[0].param) };
     
     function next(){
 	const worst=simplex[simplex.length-1];
@@ -55,7 +56,7 @@ const simplex=(data, func, initpar)=>{
 	    const diminishParam=worst.param.map((a,i)=> diminishConst*a+(1.0-diminishConst)*centerParam[i]);
 	    const diminishChi2=calcChi2(...diminishParam);
 	    if( diminishChi2<worst.chi2 ){
-		console.log('diminish chi2 :', diminishChi2);
+//		console.log('diminish chi2 :', diminishChi2);
 		worst.param=diminishParam; worst.chi2=diminishChi2;
 	    }
 	    else shrink();

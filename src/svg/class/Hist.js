@@ -3,11 +3,12 @@ import draw from './Hist/draw.js';
 import fill from './Hist/fill.js';
 import dump from './Hist/dump.js';
 import reset from './Hist/reset.js';
+import drawFunc from './Hist/drawFunc.js';
 
 const Hist=class{
     constructor(data, label, group, options){
         this._g=group;
-//	const width=this.disp.width.animVal.value, height=this.disp.height.animVal.value, x0=this.disp.x.animVal.value, y0=this.disp.y.animVal.value;
+	this._drawObj=[];
 	init(this, data, label, options.labelWidth);
     }
 
@@ -24,6 +25,8 @@ const Hist=class{
     binLabel(i)  { return this._bins[i].label; }
     contentArray(){ return this._bins.map(a=> a.content).slice(0, -1); }
     labelArray()  { return this._bins.map(a=> a.label).slice(0, -1); }
+
+    drawFunc(func){ return drawFunc(this, func); }
 }
 
 export default Hist;
