@@ -43,6 +43,16 @@ Some functions are wrapped by myself.
 If you input number use standerd 'Math' module.
 If you input Complex class use return Complex value, which use my implemention.
 
+#### Numerical derivative
+Numerical derivative is implemented three type, forward, backward and central.
+
+#### Numerical integral
+Numerical integral is implemented, trapezoid method and simpson method.
+
+#### Fitting for function
+##### Nelder's Down-hill simplex method
+
+
 ### SVG module
 This module is Graph/Hist utility using Snap.svg.
 
@@ -68,6 +78,8 @@ In this page use creative commons by-lisence music ![by-lisence](https://komtmt.
 ## reference
 
 ### math module
+[Nelder's Down-hill simplex method - yasuhisa's blog](https://www.yasuhisay.info/entry/20091006/1254765446)
+
 
 ### audio module
 [Web Audio Apps | g200kg Music & Software](https://www.g200kg.com/jp/webaudio/)  
