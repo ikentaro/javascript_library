@@ -18,7 +18,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
     for( let i=0; i<1000; i++ ){ hist.fill(Math.round(math.random.gauss(0, 10))); }
     hist.draw();
     
-    math.fit.simplex({ x: hist.labelArray().map(a=> Number(a)), y: hist.contentArray(), err: hist.contentArray().map(a=> Math.sqrt(a)) }, gauss);
+    math.fit.simplex({ x: hist.labelArray().map(a=> Number(a)), y: hist.contentArray(), err: hist.contentArray().map(a=> Math.sqrt(a)) },
+		     gauss, [ Math.max(...hist.contentArray()), 0, 10 ]);
 
     function gauss(x, scale, mean, sigma){ return scale*Math.exp(-Math.pow((x-mean)/sigma, 2)/2) }; 
     document.getElementById('btn-reset').addEventListener('click', ()=>{ hist.reset(); });
