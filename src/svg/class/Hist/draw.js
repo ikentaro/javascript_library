@@ -1,12 +1,13 @@
 const draw=(h)=>{
     const width=h.disp.width.animVal.value, height=h.disp.height.animVal.value, x0=h.disp.x.animVal.value, y0=h.disp.y.animVal.value+height;
     const max=h._bins.reduce((max, a)=> max>a.content ? max : a.content, 0);
-    const scaleY=height/(1.1*(max+Math.sqrt(max))), scaleX=width/(h._bins.length-1);
+    const scaleY= max>0 ? height/(1.1*(max+Math.sqrt(max))) : 0;
+    const scaleX=width/(h._bins.length-1);
     
     for( let i=0; i<h._bins.length-1; i++ ){	
 	const barLength=h._bins[i].content*scaleY;
 	const barPos=y0-barLength, sqrtContLen=Math.sqrt(h._bins[i].content)*scaleY;
-	
+
 	if( h._bins[i].elem==null ) h._bins[i].elem=h._g.rect(x0+i*scaleX, barPos, scaleX, barLength).attr({stroke: 'none', fill: 'cyan' });
 	else h._bins[i].elem.attr({ 'x': x0+i*scaleX, 'y': barPos, 'width': scaleX, 'height': barLength });
 	
