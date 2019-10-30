@@ -24,6 +24,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	console.log('parameter  :', ...result.param);
 	console.log('chi-square :', result.chi2);
 	hist.drawFunc(result.function);
+
+	document.getElementById('fit-mean').value=result.param[1];
+	document.getElementById('fit-sigma').value=result.param[2];
     });
 							 
     function gauss(x, scale, mean, sigma){ return scale*Math.exp(-Math.pow((x-mean)/sigma, 2)/2) }; 

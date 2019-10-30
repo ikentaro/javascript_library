@@ -238,7 +238,7 @@ eval("__webpack_require__.r(__webpack_exports__);\nvar init = function init(h, d
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nvar reset = function reset(h) {\n  h._bins.forEach(function (bin) {\n    bin.elem.reset();\n    bin.bar.reset();\n    bin.errBar.reset();\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (reset);\n\n//# sourceURL=webpack:///./src/svg/class/Hist/reset.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nvar reset = function reset(h) {\n  h._bins.forEach(function (bin) {\n    bin.content = 0;\n  });\n\n  h.draw();\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (reset);\n\n//# sourceURL=webpack:///./src/svg/class/Hist/reset.js?");
 
 /***/ }),
 
