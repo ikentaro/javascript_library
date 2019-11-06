@@ -16,6 +16,7 @@ import setStateControl from './audio/setStateControl.js'
 import setSmoothingTimeControl from './audio/setSmoothingTimeControl.js'
 
 import setFilterOption  from './audio/setFilterOption.js'
+import setOscillatorType from './audio/setOscillatorType.js'
 
 window.audio=window.audio || {
     context: context,
@@ -35,6 +36,7 @@ window.audio=window.audio || {
     setMixControl:           setMixControl,
     setStateControl:         setStateControl,
     setSmoothingTimeControl: setSmoothingTimeControl,
+    setOscillatorType:       setOscillatorType,
 }
 
 console.log('===== audio module print =====');

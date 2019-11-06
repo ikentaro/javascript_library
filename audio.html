@@ -66,11 +66,22 @@
       <div>
 	音源:<select id="sound-src">
 	  <option value="jazz2">Jazz Bars</option>
-	  <option value="drum0">ドラムロール</option>
 	  <option value="jazz0">Closer To Jazz</option>
 	  <option value="jazz1">OK, Dokey, Smokey</option>
+	  <option value="oscillator">Oscillator</option>
 	</select>
-	<button id="play">Play</button><br>
+      </div>
+
+      オシレーター 表示<input type="checkbox" id="oscillator-display" checked></div>
+      <div id="oscillator">
+	タイプ:<select id="oscillator-type"></select><br>
+	<input id="range-oscillator-freq" type="range" min="0" max="2000" step="1" value="350"> 周波数 : <input id="span-oscillator-freq" readonly><br>
+	<input id="range-oscillator-detune" type="range" min="-100" max="100" step="1" value="0"> デチューン : <input id="span-oscillator-detune" readonly><br>
+      </div>
+
+      <div>
+	<button id="play">Play</button>
+	<button id="stop">Stop</button>
       </div>
     </header>
 
