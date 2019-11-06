@@ -32,7 +32,6 @@ const Module=class{
     }
 };
 
-
 const delay=()=>{
     return new Module();
 }
