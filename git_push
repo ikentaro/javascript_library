@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+password=`echo_pw.sh git_jslib`
+email=`git config user.email`
+
+git_push.sh $email $password
+# echo $email $password
