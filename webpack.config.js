@@ -7,6 +7,7 @@ module.exports={
 	math: './src/math.js',
 	three: './src/three.js',
 	audio: './src/audio.js',
+	anime: './src/anime.js',
     },
 
     output: {
