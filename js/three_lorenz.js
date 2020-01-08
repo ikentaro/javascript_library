@@ -16,7 +16,7 @@ window.addEventListener('load', ()=>{
     document.getElementById('number-y').addEventListener('change', setPos);
     document.getElementById('number-z').addEventListener('change', setPos);
     document.getElementById('btn-start').addEventListener('click', ()=>{
-//	console.log('===== start click =====');
+	//	console.log('===== start click =====');
 	three.orbitControl();
 	
 	const [ p, r, b ]=getParam();

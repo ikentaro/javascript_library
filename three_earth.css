@@ -1,4 +1,6 @@
 * { padding: 0; margin: 0; }
 body{ width: 100vw; height: 100vh; }
 
-body > div { width: 100%; height: 100%; }
+body > header { width: 100%; height: 20%; }
+body > div    { width: 100%; height: 78%; }
+body > footer { width: 100%; height: 2%; }

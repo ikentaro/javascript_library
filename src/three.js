@@ -10,6 +10,8 @@ import light    from './three/light.js'
 
 import axis from './three/axis.js'
 
+import texture from './three/texture.js'
+
 import orbitControl from './three/orbitControl.js'
 
 window.three=window.three || {
@@ -27,6 +29,8 @@ window.three=window.three || {
 
     orbitControl: orbitControl,
 
+    texture: texture, // Promise texture(ural);
+    
     vector3: (x, y, z)=>{ return new THREE.Vector3(x, y, z); },
     geometory: ()=>{ return new THREE.Geometry(); },
     line: (geom, material)=>{ return new THREE.Line(geom, material); },

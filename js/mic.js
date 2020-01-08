@@ -11,9 +11,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	const mediaSS=audio.create.mediaStreamSource(stream);
 	
 	mediaSS.connect(analyzer).connect(audio.context.destination);
-    });
-    
-
-    
+    });    
     console.log('===== mic FINISH =====');
 });
