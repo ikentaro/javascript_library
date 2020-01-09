@@ -20,9 +20,11 @@
     <header>
       シミュレーション時間<input type="text" id="sim-time" readonly value="2000/00/00 00:00"></input><br>
       FPS<input type="number" id="fps" readonly value="0"></input><br>
-      カメラ: 全体像<input type="radio" name="camera"></input>
-      地球 <input type="radio" name="camera"></input>
-      ユーザーコントロール<input type="radio" name="camera"></input>
+      カメラ: 全体像<input type="radio" name="camera" value="1"></input>
+      地球(背面)    <input type="radio" name="camera" value="2"></input>
+      地球(逆向き)  <input type="radio" name="camera" value="3"></input>
+      地球(周回)    <input type="radio" name="camera" value="4"></input>
+<!--      ユーザーコントロール<input type="radio" name="camera" value="4"></input> -->
     </header>
     <div id="canvas">
     </div>

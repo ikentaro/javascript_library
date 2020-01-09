@@ -14,18 +14,43 @@ window.addEventListener('load', async ()=>{
     const fpsElem=document.getElementById('fps');
     
     const R=50, r=10;
-    three.light.point(0xFFFFFF, 1.0);
-        
+    three.light.point(0xFFFFFF, 1.0).position.set( 11, 0, 0);
+    three.light.point(0xFFFFFF, 1.0).position.set(-11, 0, 0);
+    three.light.point(0xFFFFFF, 1.0).position.set(0,  11, 0);
+    three.light.point(0xFFFFFF, 1.0).position.set(0, -11, 0);
+    three.light.point(0xFFFFFF, 1.0).position.set(0, 0,  11);
+    three.light.point(0xFFFFFF, 1.0).position.set(0, 0, -11);
+    
     const earthTexture= await three.texture('earth.png');
     const earth=three.mesh(three.geom.sphere(3, 10, 10), three.material.standard({ map: earthTexture }));
     const moon=three.mesh(three.geom.sphere(1, 10, 10), three.material.standard({ color: 'yellow',  }));
     const sun=three.mesh(three.geom.sphere(10, 10, 10), three.material.standard({ color: 'red', opacity: 0.5, transparent: true, side: THREE.DoubleSide }), { pos: [0, 0, 0] });
-
     anime.request(calc);
+    
+    function setCam(thetaEarth){
+	const selected=[ ...document.getElementsByName('camera') ].find(a=> a.checked);
+	if( selected.value==1 ){
+	    three.config.camera.position.set(60, 50, 60);
+	    three.config.camera.lookAt(0, 0, 0);
+	}
+	else if( selected.value==2 ){
+	    three.config.camera.position.set(1.5*R*Math.cos(thetaEarth), 20, 1.5*R*Math.sin(thetaEarth));
+	    three.config.camera.lookAt(0, 0, 0);
+	}
+	else if( selected.value==3 ){
+	    three.config.camera.position.set(-0.5*R*Math.cos(thetaEarth), 20, -0.5*R*Math.sin(thetaEarth));
+	    three.config.camera.lookAt(0, 0, 0);
+	}
+	else if( selected.value==4 ){
+	    three.config.camera.position.set(R*Math.cos(thetaEarth)+R*Math.sin(thetaEarth), 10 ,R*Math.sin(thetaEarth)+R*Math.cos(thetaEarth));
+	    three.config.camera.lookAt(R*Math.cos(thetaEarth), 0. ,R*Math.sin(thetaEarth));
+	}
+//	else alert('カメラエラー');
+	console.log(selected.value);	
+    }
     function calc(){
 	const now=performance.now();
 	times.push(now);
-	console.log(now, times.length);
 	while( times[0]<now-1000 ) times.shift();
 	
 	let innerTime=scaleFactor*performance.now();
@@ -53,6 +78,8 @@ window.addEventListener('load', async ()=>{
 	fpsElem.value=times.length;
 	earth.rotateY(localTheta);
 	three.render();
+
+	setCam(thetaEarth);
     }
     console.log('===== Three.js Wrapper earth FINISH =====');
 });
