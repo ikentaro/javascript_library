@@ -20,7 +20,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	}
 	mediaSS.connect(analyzer).connect(audio.context.destination);
 
-//	recorder.ondataavailable = (e)=>{ console.log('ondataavailable', e.data); chunks.push(e.data); };
 	recorder.addEventListener('dataavailable', (e)=>{ console.log('ondataavailable', e.data); chunks.push(e.data); });
 	recorder.addEventListener('stop', ()=>{
 	    console.log('Audio file closing');

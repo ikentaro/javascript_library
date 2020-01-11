@@ -8,6 +8,7 @@ module.exports={
 	three: './src/three.js',
 	audio: './src/audio.js',
 	anime: './src/anime.js',
+	read:  './src/read.js',
     },
 
     output: {
