@@ -3,9 +3,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const sf2Elem=document.getElementById('sf2-file');
     const sf2Files={};
     [ ...sf2Elem.children ].forEach(async (a)=>{
-	const data=await read.riff(a.value);
+	const data=await read.sf2(a.value);
+	
 	console.log(data);
     });
     
     console.log('===== Read SoudFont FINISH =====');
 });
+
+
