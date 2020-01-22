@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Three.js Wrapper Library 3体問題</title>
+    <meta name="description" content="Three.jsのラッパーライブラリのサンプル.3 3体問題シミュレーション">
+
+    <link rel="stylesheet" href="three_body.css">
+    
+    <script src="node_modules/three/build/three.min.js"></script>
+    <script src="node_modules/three/examples/js/controls/OrbitControls.js"></script>
+
+    <script src="dist/three.js"></script>
+    <script src="dist/math.js"></script>
+    <script src="dist/anime.js"></script>
+    <script src="js/three_body2.js"></script>
+  </head>
+  
+  <body>
+    <header>
+      Green pos
+      (<input type="number" id="pos00" value="10" step="0.1"></input>,
+      <input type="number"  id="pos01" value="0"  step="0.1"></input>,
+      <input type="number"  id="pos02" value="0"  step="0.1"></input>)<br>
+      Green 速度
+      (<input type="number" id="v00" value="0"  step="0.1"></input>,
+      <input type="number"  id="v01" value="10" step="0.1"></input>,
+      <input type="number"  id="v02" value="0"  step="0.1"></input>)<br>
+      Green 質量<input type="number"  id="mass0" value="1" step="0.1"></input><br>
+
+      Red pos
+      (<input type="number" id="pos10" value="0"  step="0.1"></input>,
+      <input type="number"  id="pos11" value="10" step="0.1"></input>,
+      <input type="number"  id="pos12" value="0"  step="0.1"></input>)<br>
+      Red 速度
+      (<input type="number" id="v10" value="0"  step="0.1"></input>,
+      <input type="number"  id="v11" value="0"  step="0.1"></input>,
+      <input type="number"  id="v12" value="10" step="0.1"></input>)<br>
+      Red 質量<input type="number"  id="mass1" value="1" step="0.1"></input><br>
+
+      Blue pos
+      (<input type="number" id="pos20" value="0"  step="0.1"></input>,
+      <input type="number"  id="pos21" value="0"  step="0.1"></input>,
+      <input type="number"  id="pos22" value="10" step="0.1"></input>)<br>
+      Blue 速度
+      (<input type="number" id="v20" value="10" step="0.1"></input>,
+      <input type="number"  id="v21" value="0"  step="0.1"></input>,
+      <input type="number"  id="v22" value="0"  step="0.1"></input>)<br>
+      Blue 質量<input type="number"  id="mass2" value="1" step="0.1"></input><br>
+
+      <input type="number" id="gravity-const" value="1.4" step="0.1"></input>
+      <input type="button" id="start-btn" value="開始"></input>
+    </header>
+    
+    <div id="canvas">
+
+    </div>
+    
+    <footer>
+    </footer>
+  </body>
+</html>
