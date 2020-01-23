@@ -1,9 +1,8 @@
 window.addEventListener('DOMContentLoaded', ()=>{
     console.log('===== 3-body simulation Runge-Kutta START  =====');
-    let scalingF=0.001;
-    let time=performance.now(), G=3.0e3;
-    
+    let scalingF=0.001, time=performance.now(), G=3.0e3;
     const pos=[ math.vector(0, 0, 0), math.vector(0, 0, 0), math.vector(0, 0, 0) ], vel=[ math.vector(0, 0, 0), math.vector(0, 0, 0), math.vector(0, 0, 0) ], mass=[ 0, 0, 0 ];
+    
     const posElem=[], velElem=[], massElem=[];
     const gElem=document.getElementById('gravity-const');
     for( let i=0; i<3; i++ ){

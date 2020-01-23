@@ -81,19 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/doc.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/html.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/doc.js":
-/*!********************!*\
-  !*** ./src/doc.js ***!
-  \********************/
+/***/ "./src/html.js":
+/*!*********************!*\
+  !*** ./src/html.js ***!
+  \*********************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("var doc = {};\nwindow.doc = window.doc || doc;\nif (doc === window.doc) console.log('>>>>> doc Module Loaded <<<<<');\n\n//# sourceURL=webpack:///./src/doc.js?");
+eval("var html = {};\nwindow.html = window.html || html;\nif (html === window.html) console.log('>>>>> html Module Loaded <<<<<');\n\n//# sourceURL=webpack:///./src/html.js?");
 
 /***/ })
 

@@ -1,6 +1,9 @@
-window.doc=window.doc || {
-    create: (tag)=>{ document.createElement(tag) },
+const doc={
+
 }
 
-console.log('===== doc module print =====');
-console.log(window.doc);
+window.doc=window.doc || doc;
+
+if( doc===window.doc ) console.log('>>>>> doc Module Loaded <<<<<'); 
+
+

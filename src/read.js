@@ -8,4 +8,4 @@ const read={
 
 window.read=window.read || read;
 
-if( window.read===read ) console.log('read Module Loaded');
+if( window.read===read ) console.log('>>>>> read Module Loaded <<<<<');

@@ -2,7 +2,9 @@ const path=require('path');
 
 module.exports={
     entry: {
-	//	util: './src/util.js',	
+	//	util: './src/util.js',
+	html:   './src/html.js',
+	doc:   './src/doc.js',
 	svg:   './src/svg.js',
 	math:  './src/math.js',
 	three: './src/three.js',

@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _read_riff_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./read/riff.js */ \"./src/read/riff.js\");\n/* harmony import */ var _read_sf2_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./read/sf2.js */ \"./src/read/sf2.js\");\n\n\nvar read = {\n  riff: _read_riff_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  sf2: function sf2(filepath) {\n    return Object(_read_sf2_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(Object(_read_riff_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(filepath));\n  }\n};\nwindow.read = window.read || read;\nif (window.read === read) console.log('read Module Loaded');\n\n//# sourceURL=webpack:///./src/read.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _read_riff_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./read/riff.js */ \"./src/read/riff.js\");\n/* harmony import */ var _read_sf2_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./read/sf2.js */ \"./src/read/sf2.js\");\n\n\nvar read = {\n  riff: _read_riff_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  sf2: function sf2(filepath) {\n    return Object(_read_sf2_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(Object(_read_riff_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(filepath));\n  }\n};\nwindow.read = window.read || read;\nif (window.read === read) console.log('>>>>> read Module Loaded <<<<<');\n\n//# sourceURL=webpack:///./src/read.js?");
 
 /***/ }),
 
