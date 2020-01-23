@@ -8,11 +8,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const gElem   = doc.get.id('gravity-const');
 
     html.add.event(posElem,  'change', ()=>{ getParam(), setPos(); });
-    html.add.event(posElem,  'change', getParam);
-    html.add.event(gElem,    'change', getParam);
-    html.add.event(massElem, 'change', getParam);
+    html.add.event([ posElem, massElem, gElem ], 'change', getParam);
 
-    
     three.config.set({ html: document.getElementById('canvas')});
     three.camera.perspective({ pos: [ 50, 50, 50 ], lookAt: [ 0, 0, 0 ] });
     const balls=[], colorNames=[ 'green', 'red', 'blue' ];    
