@@ -2,15 +2,11 @@ window.addEventListener('DOMContentLoaded', ()=>{
     console.log('===== 3-body simulation Runge-Kutta START  =====');
     let scalingF=0.001, time=performance.now(), G=3.0e3;
     const pos=[ math.vector(0, 0, 0), math.vector(0, 0, 0), math.vector(0, 0, 0) ], vel=[ math.vector(0, 0, 0), math.vector(0, 0, 0), math.vector(0, 0, 0) ], mass=[ 0, 0, 0 ];
+    const posElem = doc.get.id( [[ 'pos00', 'pos01', 'pos02' ], [ 'pos10', 'pos11', 'pos12' ], [ 'pos20', 'pos21', 'pos22' ]] );
+    const velElem = doc.get.id( [[ 'v00',   'v01',   'v02'   ], [ 'v10',   'v11',   'v12'   ], [ 'v20',   'v21',   'v22'   ]] );
+    const massElem= doc.get.id( [ 'mass0', 'mass1', 'mass2' ] );
+    const gElem   = doc.get.id('gravity-const');
     
-    const posElem=[], velElem=[], massElem=[];
-    const gElem=document.getElementById('gravity-const');
-    for( let i=0; i<3; i++ ){
-	massElem.push(document.getElementById('mass'+i));
-	const subPos=[], subVel=[];
-	for( let j=0; j<3; j++ ){ subPos.push(document.getElementById('pos'+i+j)), subVel.push(document.getElementById('v'+i+j)); }	
-	posElem.push(subPos); velElem.push(subVel);
-    }
     posElem.forEach(a=>{ a.forEach(a=>{ a.addEventListener('change', ()=>{ getParam(); setPos(); }) }) });
     velElem.forEach(a=>{ a.forEach(a=>{ a.addEventListener('change', getParam) }) });
     [ ...massElem, gElem ].forEach(a=> a.addEventListener('change', getParam));

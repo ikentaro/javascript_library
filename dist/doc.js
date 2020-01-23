@@ -90,10 +90,35 @@
 /*!********************!*\
   !*** ./src/doc.js ***!
   \********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var doc = {};\nwindow.doc = window.doc || doc;\nif (doc === window.doc) console.log('>>>>> doc Module Loaded <<<<<');\n\n//# sourceURL=webpack:///./src/doc.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _doc_get_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./doc/get.js */ \"./src/doc/get.js\");\n\nvar doc = {\n  get: _doc_get_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n};\nwindow.doc = window.doc || doc;\nif (doc === window.doc) console.log('>>>>> doc Module Loaded <<<<<');\n\n//# sourceURL=webpack:///./src/doc.js?");
+
+/***/ }),
+
+/***/ "./src/doc/get.js":
+/*!************************!*\
+  !*** ./src/doc/get.js ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _get_id_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./get/id.js */ \"./src/doc/get/id.js\");\n\nvar get = {\n  id: _get_id_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (get);\n\n//# sourceURL=webpack:///./src/doc/get.js?");
+
+/***/ }),
+
+/***/ "./src/doc/get/id.js":
+/*!***************************!*\
+  !*** ./src/doc/get/id.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nvar id = function id(arg) {\n  if (typeof arg === 'string') return document.getElementById(arg);\n  if (Array.isArray(arg) && arg.every(function (a) {\n    return typeof a === 'string';\n  })) return arg.map(function (a) {\n    return document.getElementById(a);\n  });\n  if (Array.isArray(arg) && arg.every(function (a) {\n    return Array.isArray(a);\n  })) return arg.map(function (a) {\n    return id(a);\n  });\n  throw new Error('!!!!! doc.get.id invailed argment typeof(id)=' + _typeof(id) + '!!!!!');\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (id);\n\n//# sourceURL=webpack:///./src/doc/get/id.js?");
 
 /***/ })
 
