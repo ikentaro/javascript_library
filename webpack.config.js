@@ -3,8 +3,8 @@ const path=require('path');
 module.exports={
     entry: {
 	//	util: './src/util.js',	
-	svg: './src/svg.js',
-	math: './src/math.js',
+	svg:   './src/svg.js',
+	math:  './src/math.js',
 	three: './src/three.js',
 	audio: './src/audio.js',
 	anime: './src/anime.js',

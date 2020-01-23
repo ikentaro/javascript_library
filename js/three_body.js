@@ -34,11 +34,11 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	const now=performance.now();
 	const dt=scalingF*(time-now);
 	time=now;
-//	console.log('===========\ndt   :', dt, 'now :', now, 'time', time);	
+	//	console.log('===========\ndt   :', dt, 'now :', now, 'time', time);
+	const forces=[];
 	for( let i=0; i<3; i++ ){
 	    let force=[ 0, 0, 0 ];
 	    for( j=0; j<3; j++ ){
-		pos[i][j]+=dt*vel[i][j];
 		if( i===j ) continue;
 		const r=Math.sqrt(Math.pow(pos[i][0]-pos[j][0], 2)+Math.pow(pos[i][1]-pos[j][1], 2)+Math.pow(pos[i][2]-pos[j][2], 2));
 		force[0]+=G*mass[i]*mass[j]*(pos[j][0]-pos[i][0])/Math.pow(r, 3);
@@ -48,7 +48,17 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	    vel[i][0]+=dt*force[0]/mass[i];
 	    vel[i][1]+=dt*force[1]/mass[i];
 	    vel[i][2]+=dt*force[2]/mass[i];
+	    console.log('foce['+i+'] ('+force[0]+','+force[1]+','+force[2]+')');
+	    forces.push(force);
 	}
+	for( let i=0; i<3; i++ ){
+	    for( let j=0; j<3; j++ ){
+		pos[i][j]+=vel[i][j]*dt;
+		vel[i][j]+=forces[i][j]*dt/mass[i];
+	    }
+	}
+
+	throw new Error('tmp');
 	setPos();
 
 	return isContinue(); 

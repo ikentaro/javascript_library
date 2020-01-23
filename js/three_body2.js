@@ -36,6 +36,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	    three.render();
 	    return isContinue();
 	}
+	disabledAll();
 	anime.request(func);
     });
 
@@ -46,11 +47,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	    for( let j=0; j<vel.length; j++ ){
 		if( i===j ) continue;
 		force=math.add(force, math.mul(math.sub(pos[j], pos[i]), mass[i], mass[j], math.div(G, math.pow(math.sub(pos[j], pos[i]).abs(), 3))));
+		console.log(i, j, math.sub(pos[j], pos[i]), mass[i], mass[j], G, math.sub(pos[j], pos[i]).abs());		
 	    }
-	    console.log(force);
+	    console.log('foce['+i+'] ('+force[0]+','+force[1]+','+force[2]+')');
 	    result.push(math.div(force, mass[i]));
 	}
-//	console.log('calc result', result);
+	throw new Error('tmp');
 	return result;
     }
 	
@@ -82,6 +84,13 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	for( let i=0; i<3; i++ ) for( let j=0; j<3; j++ ) console.log(' x['+i+']['+j+']', pos[i][j]);
 	console.log('===== print velocity =====');
 	for( let i=0; i<3; i++ ) for( let j=0; j<3; j++ ) console.log(' v['+i+']['+j+']', vel[i][j]);
+    }
+
+    function disabledAll(flag=true){
+	posElem.forEach(a=> a.forEach(a=>{ a.disabled=flag; }));
+	velElem.forEach(a=> a.forEach(a=>{ a.disabled=flag; }));
+	massElem.forEach(a=> a.disabled=flag);
+	gElem.disabled=true;
     }
 });
 

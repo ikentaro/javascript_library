@@ -10,12 +10,6 @@ const step=(func, args, delta=1.0e-8)=>{
 	const k3=func(...args.map((a, i)=> add(a, mul(0.5, delta, k2[i]))));
 	const k4=func(...args.map((a, i)=> add(a, mul(delta, k3[i])))); 
 
-	// console.log('k1', k1);
-	// console.log('k2', k2);
-	// console.log('k3', k3);
-	// console.log('k4', k4);
-	// console.log('dx', args.map((a, i)=> div(mul(delta, add(k1[i], mul(2, k2[i]), mul(2, k3[i]), k4[i])), 6)));
-	// console.log('next', args.map((a, i)=> add(a, div(mul(delta, add(k1[i], mul(2, k2[i]), mul(2, k3[i]), k4[i])), 6))));
 	return args.map((a, i)=> add(a, div(mul(delta, add(k1[i], mul(2, k2[i]), mul(2, k3[i]), k4[i])), 6)));
     }
 

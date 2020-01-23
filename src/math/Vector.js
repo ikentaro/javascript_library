@@ -12,7 +12,7 @@ const Vector=class extends Array{
     }
 
     get length(){ return this.length; }
-    abs2(){ return this.reduce((sum, e)=> add(sum, mul(e, conj(e)))); };
+    abs2(){ return this.reduce((sum, e)=> add(sum, mul(e, conj(e))), 0); };
     abs(){ return Math.sqrt(this.abs2()); };
 
     copy(){ return new Vector(...this.map(a=> copy(a))); };
