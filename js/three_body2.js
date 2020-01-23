@@ -6,10 +6,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const velElem = doc.get.id( [[ 'v00',   'v01',   'v02'   ], [ 'v10',   'v11',   'v12'   ], [ 'v20',   'v21',   'v22'   ]] );
     const massElem= doc.get.id( [ 'mass0', 'mass1', 'mass2' ] );
     const gElem   = doc.get.id('gravity-const');
-    
-    posElem.forEach(a=>{ a.forEach(a=>{ a.addEventListener('change', ()=>{ getParam(); setPos(); }) }) });
-    velElem.forEach(a=>{ a.forEach(a=>{ a.addEventListener('change', getParam) }) });
-    [ ...massElem, gElem ].forEach(a=> a.addEventListener('change', getParam));
+
+    html.add.event(posElem,  'change', ()=>{ getParam(), setPos(); });
+    html.add.event(posElem,  'change', getParam);
+    html.add.event(gElem,    'change', getParam);
+    html.add.event(massElem, 'change', getParam);
+
     
     three.config.set({ html: document.getElementById('canvas')});
     three.camera.perspective({ pos: [ 50, 50, 50 ], lookAt: [ 0, 0, 0 ] });

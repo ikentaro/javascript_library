@@ -1,5 +1,7 @@
-const html={
+import add from './html/add.js'
 
+const html={
+    add: add,
 }
 
 window.html=window.html || html;

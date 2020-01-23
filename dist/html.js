@@ -90,10 +90,35 @@
 /*!*********************!*\
   !*** ./src/html.js ***!
   \*********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var html = {};\nwindow.html = window.html || html;\nif (html === window.html) console.log('>>>>> html Module Loaded <<<<<');\n\n//# sourceURL=webpack:///./src/html.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _html_add_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./html/add.js */ \"./src/html/add.js\");\n\nvar html = {\n  add: _html_add_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n};\nwindow.html = window.html || html;\nif (html === window.html) console.log('>>>>> html Module Loaded <<<<<');\n\n//# sourceURL=webpack:///./src/html.js?");
+
+/***/ }),
+
+/***/ "./src/html/add.js":
+/*!*************************!*\
+  !*** ./src/html/add.js ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _add_event_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./add/event.js */ \"./src/html/add/event.js\");\n\nvar add = {\n  event: _add_event_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (add);\n\n//# sourceURL=webpack:///./src/html/add.js?");
+
+/***/ }),
+
+/***/ "./src/html/add/event.js":
+/*!*******************************!*\
+  !*** ./src/html/add/event.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nvar event = function event(elem, evName, func) {\n  // 早期return を使った型分別\n  if (elem instanceof HTMLElement) return elem.addEventListener(evName, func);\n  if (Array.isArray(elem) && elem.every(function (a) {\n    return a instanceof HTMLElement;\n  })) return elem.forEach(function (a) {\n    a.addEventListener(evName, func);\n  });\n  if (Array.isArray(elem) && elem.every(function (a) {\n    return Array.isArray(a);\n  })) return elem.forEach(function (a) {\n    event(a, evName, func);\n  });\n  throw new Error('!!!!! html.add.event invalid element typeof(elem) ' + _typeof(elem) + '!!!!!');\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (event);\n\n//# sourceURL=webpack:///./src/html/add/event.js?");
 
 /***/ })
 
