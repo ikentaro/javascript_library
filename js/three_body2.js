@@ -47,12 +47,9 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	    for( let j=0; j<vel.length; j++ ){
 		if( i===j ) continue;
 		force=math.add(force, math.mul(math.sub(pos[j], pos[i]), mass[i], mass[j], math.div(G, math.pow(math.sub(pos[j], pos[i]).abs(), 3))));
-		console.log(i, j, math.sub(pos[j], pos[i]), mass[i], mass[j], G, math.sub(pos[j], pos[i]).abs());		
 	    }
-	    console.log('foce['+i+'] ('+force[0]+','+force[1]+','+force[2]+')');
 	    result.push(math.div(force, mass[i]));
 	}
-	throw new Error('tmp');
 	return result;
     }
 	

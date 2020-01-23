@@ -48,7 +48,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	    vel[i][0]+=dt*force[0]/mass[i];
 	    vel[i][1]+=dt*force[1]/mass[i];
 	    vel[i][2]+=dt*force[2]/mass[i];
-	    console.log('foce['+i+'] ('+force[0]+','+force[1]+','+force[2]+')');
 	    forces.push(force);
 	}
 	for( let i=0; i<3; i++ ){
@@ -57,8 +56,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
 		vel[i][j]+=forces[i][j]*dt/mass[i];
 	    }
 	}
-
-	throw new Error('tmp');
 	setPos();
 
 	return isContinue(); 
