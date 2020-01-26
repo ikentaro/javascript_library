@@ -1,11 +1,31 @@
-import readInfo from './sf2/readInfo.js'
+import readInfo        from './sf2/readInfo.js'
+import makeSample      from './sf2/makeSample.js'
+import parseInstHeader from './sf2/parseInstHeader.js'
+import parseGenMod     from './sf2/parseGenMod.js'
+import parsePresetHeader from './sf2/parsePresetHeader.js'
+import parsePreset from './sf2/parsePreset.js'
+import parseInst   from './sf2/parseInst.js'
 
 const sf2=(promise)=>{
     console.log('===== Read SoundFont2 File START =====');
     promise.then(data=>{
 	const [ infoChunk, sampleChunk, presetChunk ] = check(data).data;
-	const [ presetHeader, presetBag, presetModerator, presetGenerator, instHeader, instBag, instModerator, instGenerator ]=presetChunk.data;
+	const [ presetHeader, presetBag, presetModulator, presetGenerator, instHeader, instBag, instModulator, instGenerator, sampleHeader ]=presetChunk.data;
 	const infoData=readInfo(infoChunk);
+	const samples=makeSample(sampleHeader, sampleChunk);
+	const instList=parseInstHeader(instHeader, instBag);
+	instList.forEach(a=> parseGenMod(a.zones, instGenerator, instModulator));
+
+	const presetList=parsePresetHeader(presetHeader, presetBag);
+	presetList.forEach(a=> parseGenMod(a.zones, presetGenerator, presetModulator));
+
+//	const sortFunc=(a, b)=>{ if( a<b ) return -1; if( a>b ) return 1; return 0; }
+//	const bankIDs=presetList.map(a=> a.bankID).filter((a, i, self)=> self.indexOf(a)===i).sort(sortFunc);
+//	console.log(bankIDs);
+	const insts=instList.map(a=> parseInst(a, samples));
+	
+	const presets=presetList.map(a=> parsePreset(a, insts));
+	
 	return data;
     });
     console.log('===== Read SoundFont2 File FINISH =====');

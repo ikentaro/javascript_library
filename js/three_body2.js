@@ -1,4 +1,4 @@
-window.addEventListener('DOMContentLoaded', ()=>{
+window.addEventListener('DOMContentLoaded', ()=>{    
     console.log('===== 3-body simulation Runge-Kutta START  =====');
     let scalingF=0.001, time=performance.now(), G=3.0e3;
     const pos=[ math.vector(0, 0, 0), math.vector(0, 0, 0), math.vector(0, 0, 0) ], vel=[ math.vector(0, 0, 0), math.vector(0, 0, 0), math.vector(0, 0, 0) ], mass=[ 0, 0, 0 ];
@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const gElem   = doc.get.id('gravity-const');
 
     html.add.event(posElem,  'change', ()=>{ getParam(), setPos(); });
-    html.add.event([ posElem, massElem, gElem ], 'change', getParam);
+    html.add.event([ velElem, massElem, gElem ], 'change', getParam);
 
     three.config.set({ html: document.getElementById('canvas')});
     three.camera.perspective({ pos: [ 50, 50, 50 ], lookAt: [ 0, 0, 0 ] });
@@ -21,20 +21,19 @@ window.addEventListener('DOMContentLoaded', ()=>{
     
     document.getElementById('start-btn').addEventListener('click', ()=>{
 	time=performance.now();
-	const func=()=>{
+	const func=()=>{ // for AnimationFrame
 	    const now=performance.now();
 	    const dt=scalingF*(time-now);
 	    time=now;
 	    [ pos[0], pos[1], pos[2], vel[0], vel[1], vel[2] ] = math.rungeKutta.iterate(calc, [ pos[0], pos[1], pos[2], vel[0], vel[1], vel[2] ], 1, dt);
 	    setPos();
-	    three.render();
 	    return isContinue();
 	}
-	disabledAll();
+	html.set.property([ posElem, velElem, massElem, gElem ], 'disabled', true);
 	anime.request(func);
     });
 
-    function calc(pos0, pos1, pos2, vel0, vel1, vel2){
+    function calc(pos0, pos1, pos2, vel0, vel1, vel2){ // main function for Runge-Kutta Method
 	const result=[ vel0, vel1, vel2 ];
 	for( let i=0; i<vel.length; i++ ){
 	    let force=math.vector(0, 0, 0);

@@ -18,7 +18,7 @@ import setSmoothingTimeControl from './audio/setSmoothingTimeControl.js'
 import setFilterOption  from './audio/setFilterOption.js'
 import setOscillatorType from './audio/setOscillatorType.js'
 
-window.audio=window.audio || {
+const audio={
     context: context,
     create:  create,
     connect: connect,
@@ -39,7 +39,9 @@ window.audio=window.audio || {
     setOscillatorType:       setOscillatorType,
 }
 
-console.log('===== audio module print =====');
-console.log(window.audio);
+window.audio=window.audio || audio;
+
+if( window.audio===audio ) console.log('>>>>> audio Mpdule Loaded <<<<<');
+
 
 

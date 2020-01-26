@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _html_add_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./html/add.js */ \"./src/html/add.js\");\n\nvar html = {\n  add: _html_add_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n};\nwindow.html = window.html || html;\nif (html === window.html) console.log('>>>>> html Module Loaded <<<<<');\n\n//# sourceURL=webpack:///./src/html.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _html_add_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./html/add.js */ \"./src/html/add.js\");\n/* harmony import */ var _html_set_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./html/set.js */ \"./src/html/set.js\");\n\n\nvar html = {\n  add: _html_add_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  set: _html_set_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n};\nwindow.html = window.html || html;\nif (html === window.html) console.log('>>>>> html Module Loaded <<<<<');\n\n//# sourceURL=webpack:///./src/html.js?");
 
 /***/ }),
 
@@ -119,6 +119,30 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _add
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nvar event = function event(elem, evName, func) {\n  // 早期return を使った型分別\n  if (elem instanceof HTMLElement) return elem.addEventListener(evName, func);\n  if (Array.isArray(elem) && elem.every(function (a) {\n    return a instanceof HTMLElement;\n  })) return elem.forEach(function (a) {\n    a.addEventListener(evName, func);\n  });\n  if (Array.isArray(elem) && elem.every(function (a) {\n    return Array.isArray(a);\n  })) return elem.forEach(function (a) {\n    event(a, evName, func);\n  });\n\n  if (Array.isArray(elem) && elem.find(function (a) {\n    return a instanceof HTMLElement;\n  })) {\n    elem.filter(function (a) {\n      return a instanceof HTMLElement;\n    }).forEach(function (a) {\n      a.addEventListener(evName, func);\n    });\n    elem.filter(function (a) {\n      return Array.isArray(a);\n    }).forEach(function (a) {\n      return event(a, evName, func);\n    });\n    return;\n  }\n\n  throw new Error('!!!!! html.add.event invalid element typeof(elem) ' + _typeof(elem) + '!!!!!');\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (event);\n\n//# sourceURL=webpack:///./src/html/add/event.js?");
+
+/***/ }),
+
+/***/ "./src/html/set.js":
+/*!*************************!*\
+  !*** ./src/html/set.js ***!
+  \*************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _set_property_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./set/property.js */ \"./src/html/set/property.js\");\n\nvar set = {\n  property: _set_property_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (set);\n\n//# sourceURL=webpack:///./src/html/set.js?");
+
+/***/ }),
+
+/***/ "./src/html/set/property.js":
+/*!**********************************!*\
+  !*** ./src/html/set/property.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nfunction _typeof(obj) { if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nvar property = function property(elem, pName, value) {\n  if (elem instanceof HTMLElement) return setProperty(elem, pName, value);\n  if (Array.isArray(elem) && elem.every(function (a) {\n    return a instanceof HTMLElement;\n  })) return elem.forEach(function (a) {\n    setProperty(a, pName, value);\n  });\n  if (Array.isArray(elem) && elem.every(function (a) {\n    return Array.isArray(a);\n  })) return elem.forEach(function (a) {\n    property(a, pName, value);\n  });\n\n  if (Array.isArray(elem) && elem.find(function (a) {\n    return a instanceof HTMLElement;\n  })) {\n    elem.filter(function (a) {\n      return a instanceof HTMLElement;\n    }).forEach(function (a) {\n      setProperty(a, pName, value);\n    });\n    elem.filter(function (a) {\n      return Array.isArray(a);\n    }).forEach(function (a) {\n      property(a, pName, value);\n    });\n    return;\n  }\n\n  throw new Error('!!!!! html.set.property invalid element typeof(elem) ' + _typeof(elem) + ' !!!!!');\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (property);\n\nfunction setProperty(elem, pName, value) {\n  if (_typeof(value) !== _typeof(elem[pName])) console.warn('type of property is not matched', _typeof(elem[pName]), _typeof(value));\n  elem[pName] = value;\n}\n\n//# sourceURL=webpack:///./src/html/set/property.js?");
 
 /***/ })
 

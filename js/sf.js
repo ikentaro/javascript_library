@@ -4,11 +4,10 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const sf2Files={};
     [ ...sf2Elem.children ].forEach(async (a)=>{
 	const data=await read.sf2(a.value);
-	
-	console.log(data);
     });
-    
+
     console.log('===== Read SoudFont FINISH =====');
+//    function setInfo(data);
 });
 
 
