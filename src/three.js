@@ -14,7 +14,8 @@ import texture from './three/texture.js'
 
 import orbitControl from './three/orbitControl.js'
 
-window.three=window.three || {
+const three={
+// window.three=window.three || {
     config: config,
     dump:   dump,
     render: render,
@@ -36,5 +37,7 @@ window.three=window.three || {
     line: (geom, material)=>{ return new THREE.Line(geom, material); },
 }
 
-console.log('===== three module dump =====');
-console.log(window.three);
+window.three=window.three || three;
+
+if( window.three===three ) console.log('>>>>> three Module Loaded <<<<<');
+

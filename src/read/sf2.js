@@ -5,10 +5,10 @@ import parseGenMod     from './sf2/parseGenMod.js'
 import parsePresetHeader from './sf2/parsePresetHeader.js'
 import parsePreset from './sf2/parsePreset.js'
 import parseInst   from './sf2/parseInst.js'
+import SoundFont   from './sf2/SoundFont.js'
 
 const sf2=(promise)=>{
-    console.log('===== Read SoundFont2 File START =====');
-    promise.then(data=>{
+    return promise.then(data=>{
 	const [ infoChunk, sampleChunk, presetChunk ] = check(data).data;
 	const [ presetHeader, presetBag, presetModulator, presetGenerator, instHeader, instBag, instModulator, instGenerator, sampleHeader ]=presetChunk.data;
 	const infoData=readInfo(infoChunk);
@@ -19,16 +19,11 @@ const sf2=(promise)=>{
 	const presetList=parsePresetHeader(presetHeader, presetBag);
 	presetList.forEach(a=> parseGenMod(a.zones, presetGenerator, presetModulator));
 
-//	const sortFunc=(a, b)=>{ if( a<b ) return -1; if( a>b ) return 1; return 0; }
-//	const bankIDs=presetList.map(a=> a.bankID).filter((a, i, self)=> self.indexOf(a)===i).sort(sortFunc);
-//	console.log(bankIDs);
-	const insts=instList.map(a=> parseInst(a, samples));
-	
+	const insts=instList.map(a=> parseInst(a, samples));	
 	const presets=presetList.map(a=> parsePreset(a, insts));
-	
-	return data;
+
+	return new SoundFont(infoData, presets);
     });
-    console.log('===== Read SoundFont2 File FINISH =====');
 }
 
 export default sf2;

@@ -5,12 +5,16 @@
     <title>Sound Fontを読むサンプル</title>
     <meta name="content" description="javascriptでサウンドフォントを呼んで見るテストページ">
 
+    <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="sf.css">
 
+    <script src="dist/doc.js"></script>
+    <script src="dist/html.js"></script>
     <script src="node_modules/snapsvg/dist/snap.svg-min.js"></script>
     <script src="dist/svg.js"></script>
     <script src="dist/audio.js"></script>
     <script src="dist/read.js"></script>
+    <script src="js/modal.js"></script>
     <script src="js/sf.js"></script>
   </head>
 
@@ -23,14 +27,21 @@
 	</select>
       </div>
       <div id="div-info">
-	ヴァージョン<input id="sf-version"></input>
-	エンジン<input id="sf-engin"></input><br>
-	名前<input id="sf-name"></input>
+	名前          <input id="sf-name"     ></input><br>
+	ヴァージョン  <input id="sf-version"  ></input>
+	エンジン      <input id="sf-engin"    ></input><br>
+	デザイナー    <input id="sf-desiner"  ></input>
+	作製日        <input id="sf-date"     ></input><br>
+	コピーライト  <input id="sf-copyright"></input><br>
+	コメント      <input id="sf-comment"  ></input>
       </div>
     </header>
 
     <main>
-      <div id="svg-canvas"><div>
+      <table>
+	<tbody id="preset-tbody">
+	</tbody>
+      </table>
     </main>
 
     <footer>

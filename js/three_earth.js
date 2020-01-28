@@ -14,7 +14,7 @@ window.addEventListener('load', async ()=>{
     const R=50, r=10;
 
     setLight();
-    const earthTexture= await three.texture('earth.png');
+    const earthTexture= await three.texture('./texture/earth.png');
     const earth=three.mesh(three.geom.sphere(3, 10, 10), three.material.standard({ map: earthTexture }));
     const moon=three.mesh(three.geom.sphere(1, 10, 10), three.material.standard({ color: 'yellow',  }));
     const sun=three.mesh(three.geom.sphere(10, 10, 10), three.material.standard({ color: 'red', opacity: 0.5, transparent: true, side: THREE.DoubleSide }), { pos: [0, 0, 0] });

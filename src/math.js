@@ -35,7 +35,7 @@ import eulr       from './math/eulr.js'
 import random from './math/random.js'
 import fit    from './math/fit.js'
 
-window.math=window.math || {
+const math={
     minus: minus,
     reverse: reverse,
     isNumber: isNumber,
@@ -73,5 +73,8 @@ window.math=window.math || {
     complex: (re=0.0, im=1.0)=>{ return new Complex(re, im); },
 }
 
-console.log('===== math module print =====');
-console.log(window.math);
+window.math=window.math || math;
+
+if( window.math===math ) console.log('>>>>> math Module Loaded <<<<<');
+
+

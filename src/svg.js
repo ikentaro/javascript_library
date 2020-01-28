@@ -12,5 +12,5 @@ const svg={
 
 window.svg=window.svg || svg;
 
-console.log('>>>>> svg module Loaded <<<<<');
+if( window.svg===svg ) console.log('>>>>> svg module Loaded <<<<<');
 

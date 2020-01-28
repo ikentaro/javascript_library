@@ -5,4 +5,4 @@ body > header { width: 100%; height: 35%; }
 body > div    { width: 100%; height: 65%; }
 body > footer { width: 100%; height: 0%; }
 
-header > input[type=number] { width: 7%; }
+input[type=number] { width: 7vw; }

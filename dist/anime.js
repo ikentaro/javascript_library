@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("window.anime = window.anime || {\n  request: function request(func) {\n    console.log(\"Set Request Animation Frame :\", func.name);\n\n    var compositeFunc = function compositeFunc() {\n      if (func() !== false) window.requestAnimationFrame(compositeFunc);\n    };\n\n    window.requestAnimationFrame(compositeFunc);\n  }\n};\nconsole.log('===== anime module print =====');\nconsole.log(window.anume);\n\n//# sourceURL=webpack:///./src/anime.js?");
+eval("var anime = {\n  request: function request(func) {\n    console.log(\"Set Request Animation Frame :\", func.name);\n\n    var compositeFunc = function compositeFunc() {\n      if (func() !== false) window.requestAnimationFrame(compositeFunc);\n    };\n\n    window.requestAnimationFrame(compositeFunc);\n  }\n};\nwindow.anime = window.anime || anime;\nif (window.anime === anime) console.log('>>>>> anime Module Loaded <<<<<');\n\n//# sourceURL=webpack:///./src/anime.js?");
 
 /***/ })
 

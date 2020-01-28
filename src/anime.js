@@ -1,4 +1,4 @@
-window.anime=window.anime || {
+const anime={
     request: (func)=>{
 	console.log("Set Request Animation Frame :", func.name);
 	const compositeFunc=()=>{
@@ -8,5 +8,6 @@ window.anime=window.anime || {
     }
 }
 
-console.log('===== anime module print =====');
-console.log(window.anume);
+window.anime=window.anime || anime;
+
+if( window.anime===anime ) console.log('>>>>> anime Module Loaded <<<<<');
