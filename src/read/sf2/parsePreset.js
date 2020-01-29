@@ -20,7 +20,7 @@ const parsePreset=(presetHeader, instList)=>{
 	presetHeader.zones[i].generators.instrument=instList[i];
 	zones.push(presetHeader.zones[i]);
     }
-    return new Preset(presetHeader.name, presetHeader.MIDINumber, presetHeader.bankID, globalZone, presetHeader.zones, presetHeader.library, presetHeader.generator, presetHeader.morphology);
+    return new Preset(presetHeader.name, presetHeader.MIDINumber, presetHeader.bankID, globalZone, zones, presetHeader.library, presetHeader.generator, presetHeader.morphology);
 }
 
 export default parsePreset;

@@ -22,7 +22,7 @@ const parseInst=(instHeader, sampleList)=>{
 	zones.push(instHeader.zones[i]);
     }
 
-    return new Inst(instHeader.name, globalZone, instHeader.zones);    
+    return new Inst(instHeader.name, globalZone, zones);    
 }
 
 export default parseInst;
