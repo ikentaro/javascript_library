@@ -5,6 +5,7 @@ const mul=(...args)=>{
 	if( typeof a.mul==='function' ) return a.mul(b);
 	if( typeof b.mul==='function' ) return b.mul(a);
 
+	console.log('a =', a, 'b =', b);
 	throw new Error('! math.mul invalid argument');
     }
     

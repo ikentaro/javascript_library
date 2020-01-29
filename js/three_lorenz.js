@@ -24,7 +24,7 @@ window.addEventListener('load', ()=>{
 
 	const render=()=>{
 	    const next=math.rungeKutta.iterate(lorenzFunc, [ ball.position.x, ball.position.y, ball.position.z ], 100, 1.0e-4);
-	    const geom=three.geometory();
+	    const geom=three.geometry();
 	    geom.vertices.push(three.vector3(ball.position.x, ball.position.y, ball.position.z));
 	    geom.vertices.push(three.vector3(next[0], next[1], next[2]));
 	    

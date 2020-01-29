@@ -31,9 +31,10 @@ const three={
     orbitControl: orbitControl,
 
     texture: texture, // Promise texture(ural);
-    
+
+    //*** for near raw API ***//
     vector3: (x, y, z)=>{ return new THREE.Vector3(x, y, z); },
-    geometory: ()=>{ return new THREE.Geometry(); },
+    geometry: ()=>{ return new THREE.Geometry(); },
     line: (geom, material)=>{ return new THREE.Line(geom, material); },
 }
 

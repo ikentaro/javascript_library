@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const sf2Files={};
     const modalConfig=setModal();
 //    modalConfig.close();
-    modalConfig.main.append(doc.create('div', { id: 'svg-graph', style: { width: '100%', heigth: '100%' } }));
+    modalConfig.main.append(doc.create('div', { id: 'svg-graph', style: { width: '100%', height: '100%' } }));
     [ ...sf2Elem.children ].forEach(async (a)=>{
 	const data=await read.sf2(a.value);
 	console.log(data);
