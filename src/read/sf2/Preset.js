@@ -1,3 +1,5 @@
+import getZones from './Preset/getZones.js'
+
 const Preset =class {
     constructor(name, MIDINumber, bankID, globalZone, zones, library, generator, morphology){
 	this._name       = name;
@@ -16,6 +18,8 @@ const Preset =class {
     get library()   { return this._library; }
     get generator() { return this._generator; }
     get morphology(){ return this._morphology; }
+
+    getZones(noteNo, vel){ return getZones(this, noteNo, vel); }
 }
 
 export default Preset;

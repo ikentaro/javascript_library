@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head lang="ja">
+    <meta charset="utf-8">
+    <title>SVGを使ったグラフ</title>
+    <link rel="stylesheet" href="svg_graph.css">
+
+    <script src="node_modules/snapsvg/dist/snap.svg-min.js"></script>
+    <script src="dist/svg.js"></script>
+    <script src="dist/math.js"></script>
+    <script src="js/svg_graph.js"></script>
+  </head>
+
+  <body>
+    <header>
+      関数
+      <select id="draw-type">
+	<option value="trigono" >三角関数(sin, cos, tan)</option>
+	<option value="explog"  >指数,対数(exp, log)</option>
+	<option value="legendre">ルジャンドル関数</option>
+	<option value="hermite" >エルミート関数(正規化)</option>
+	<option value="laguerre">ラゲール関数(正規化)</option>
+	<option value="assoc-legendre">ルジャンドル陪関数</option>
+	<option value="assoc-laguerre">ラゲール陪関数</option>
+	<option value="custom"  >costom</option>
+      </select>
+      <div id="custom">
+	カスタム関数<input id="custom-body"></input> <input type="button" value="描写" id="custom-draw" placeholder="x**2+x-3"></input>
+      </div>
+      
+      <div id="assoc">
+	陪関数 次数<input id="assoc-degree" type="number" min="1" value="3" max="100"></input>
+      </div>
+    </header>
+
+    <main>
+      <div id="canvas">
+      </div>
+    </main>
+
+    <footer>
+    </footer>
+  </body>
+</html>

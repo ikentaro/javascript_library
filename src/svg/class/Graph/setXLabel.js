@@ -7,8 +7,9 @@ const setXLabel=(g, div)=>{
     const xmax=g.xmax==null ? 0 : g.xmax;
     const xmin=g.xmin==null ? 0 : g.xmin;
     const scaleX=width/(xmax-xmin);
-    
-    for( let x=xmin; x<=xmax; x+=div){
+
+    const remind=xmin%div
+    for( let x=xmin-remind; x<=xmax; x+=div){
 	const xpos=x0+scaleX*(x-xmin);
 	g._g.text(xpos, y0, String(x)).attr({textAnchor:"middle", dominantBaseline:"hanging"});
     }

@@ -1,3 +1,4 @@
 /presen/
 /node_modules/
 copyToHeroku.sh
+*.old

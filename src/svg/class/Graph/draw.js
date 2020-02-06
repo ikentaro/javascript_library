@@ -11,12 +11,11 @@ const draw=(g, x, y)=>{
     const scaleX=width/(xmax-xmin);
     const scaleY=ymax===ymin ? 0 : height/(ymax-ymin);
     let str='';
-//    console.log('scaleX', scaleX, 'scaleY', scaleY);
-
+    //    console.log('scaleX', scaleX, 'scaleY', scaleY);
+    
     if( scaleY===0 ){
 	for( let i=0; i<x.length; i++ ){
-	    const xval=x0+scaleX*(x[i]-xmin);
-	    const yval=y0-0.5*height;
+	    const xval=x0+scaleX*(x[i]-xmin), yval=y0-0.5*height;
 	    str+=xval+','+yval+',';
 	}
     }
@@ -30,9 +29,10 @@ const draw=(g, x, y)=>{
 	}
     }
     str=str.slice(0, -1);
-//    console.log('str :',str);
-//    console.log('ymax :', ymax);
-//    console.log('ymin :', ymin);
+    g.xmax=xmax, g.xmin=xmin, g.ymax=ymax, g.ymin=ymin;
+    //    console.log('str :',str);
+    //    console.log('ymax :', ymax);
+    //    console.log('ymin :', ymin);
     
     line.attr({ points: str });
 }

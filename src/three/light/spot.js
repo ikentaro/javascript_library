@@ -1,4 +1,4 @@
-const spot=(hex=0xFFFFFF, intensity=1.0, distance=0.0, angle=Math.PI/3, exponent=10.)=>{
+const spot=(hex=0xFFFFFF, intensity=1.0, distance=0.0, angle=Math.PI/3, exponent=10., decay=1.0)=>{
     return new THREE.SpotLight(hex, intensity, distance, angle, exponent);
 }
 

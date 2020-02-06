@@ -1,5 +1,4 @@
 const mul=(...args)=>{
-    
     const mul2=(a, b)=>{
 	if( typeof a==='number' && typeof b==='number' ) return a*b;
 	if( typeof a.mul==='function' ) return a.mul(b);

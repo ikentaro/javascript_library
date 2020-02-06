@@ -25,6 +25,12 @@ import asin from './math/asin.js'
 import acos from './math/acos.js'
 import atan from './math/atan.js'
 
+import legendre from './math/legendre.js'
+import hermite  from './math/hermite.js'
+import laguerre from './math/laguerre.js'
+import assocLegendre from './math/assocLegendre.js'
+import assocLaguerre from './math/assocLaguerre.js'
+
 import diff     from './math/diff.js'
 import integral from './math/integral.js'
 import solver   from './math/solver.js'
@@ -56,16 +62,22 @@ const math={
     asin: asin,
     acos: acos,
     atan: atan,
+
+    legendre: legendre,
+    hermite:  hermite,
+    laguerre: laguerre,
+    assocLegendre: assocLegendre,
+    assocLaguerre: assocLaguerre,
     
     diff: diff,
     integral: integral,
     solver: solver,
 
     rungeKutta: rungeKutta,
-    eulr: eulr,
+    eulr:   eulr,
     random: random,
     fit:    fit,
-    
+
     vector: (...args)=>{ return new Vector(...args); },
     matrix: (...args)=>{ return new Matrix(...args); },
     makeMatrix: (colSize, rawSize)=>{ return makeMatrix(colSize, rawSize); },

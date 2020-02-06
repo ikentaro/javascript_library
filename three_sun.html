@@ -2,14 +2,16 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <title>Three.js Wrapper Library 地球儀</title>
-    <meta name="description" content="Three.jsのラッパーライブラリのサンプル.2 地球儀">
+    <title>Three.js Wrapper Library 太陽系シミュレーション</title>
+    <meta name="description" content="Three.jsのラッパーライブラリのサンプル.4 太陽系シミュレーション(7体問題) -- ルンゲクッタ法">
 
-    <link rel="stylesheet" href="three_earth.css">
+    <link rel="stylesheet" href="three_sun.css">
     
     <script src="node_modules/three/build/three.min.js"></script>
     <script src="node_modules/three/examples/js/controls/OrbitControls.js"></script>
 
+    <script src="dist/doc.js"></script>
+    <script src="dist/html.js"></script>
     <script src="dist/three.js"></script>
     <script src="dist/math.js"></script>
     <script src="dist/anime.js"></script>
@@ -18,8 +20,22 @@
   
   <body>
     <header>
-      シミュレーション時間<input type="text" id="sim-time" readonly value="0"></input><br>
-      FPS<input type="number" id="fps" readonly value="0"></input><br>
+      シミュレーション時間<input type="text" id="sim-time" readonly value="0"></input> FPS<input type="number" id="fps" readonly value="0"></input><br>
+      <h3>カメラ</h3>
+      距離 0:<input type="range"   id="camera-r"     min="0", max="50"   value="15"   step="0.1"></input>:50<br>
+      方位角 0:<input type="range" id="camera-phi"   min="0", max="6.18" value="1.57" step="0.01"></input>:2&pi;<br>
+      仰角 0:<input type="range"   id="camera-theta" min="0", max="3.14" value="0.7"  step="0.01"></input>:&pi;<br>
+
+      Look at:
+      <select id="camera-look-at">
+	<option value="0">太陽</option>
+	<option value="1">水星</option>
+	<option value="2">金星</option>
+	<option value="3">地球</option>
+	<option value="4">火星</option>
+	<option value="5">土星</option>
+	<option value="6">木星</option>
+      </select>
     </header>
     
     <div id="canvas">
