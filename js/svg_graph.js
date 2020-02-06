@@ -89,10 +89,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
 	else if( selected.value==='assoc-laguerre' ){
 	    const l=Number(document.getElementById('assoc-degree').value);
 	    const dphi=360/(l+1);
-	    graph.drawFunc(x=> math.assocLaguerre(l, l, x), 0, 5, -3, 5);
-	    graph.line(0).attr({ stroke: hslToRGB(0, 100, 50) });	    
+//	    graph.drawFunc(x=> math.assocLaguerre(l, l, x)*Math.sqrt(factorial(l)/factorial(2*l))*Math.exp(-x)*Math.pow(x, l/2), 0, 10, -1, 1);
+	    graph.drawFunc(x=> math.assocLaguerre(l, l, x), 0, 5, -5, 20);
+	    graph.line(0).attr({ stroke: hslToRGB(0, 100, 50) });
 	    for( let m=l-1; m>=0; m-- ){
-	     	graph.drawFuncAdd(x=> math.assocLaguerre(l, m, x));
+//	     	graph.drawFuncAdd(x=> math.assocLaguerre(l, m, x)*Math.sqrt(factorial(l)/factorial(l+m))*Math.exp(-x)*Math.pow(x, m/2));
+		graph.drawFuncAdd(x=> math.assocLaguerre(l, m, x));
 		graph.line(graph._lines.length-1).attr({ stroke: hslToRGB(dphi*(l-m), 100, 50) });
 	    }
 	    graph.setYLabel(1);
