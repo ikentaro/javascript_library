@@ -28,11 +28,11 @@ window.addEventListener('DOMContentLoaded', async ()=>{
     const graFreq=svg.graph(0.5*anaCanvas.clientWidth, 0, 0.5*anaCanvas.clientWidth, anaCanvas.clientHeight, { ymin: -200, ymax: -30, xmin:0, xmax: audio.context.sampleRate/2.0 });
     audio.viewer.analyzer(analyzer, graWave, graFreq);
 
-    //*** setEventListnerConnector checkbox ***//    
+    //*** setEventListnerConnector checkbox ***//
+    connectModules();
     [ document.getElementById('delay-connect'), document.getElementById('ppdelay-connect'), document.getElementById('filter-connect'), document.getElementById('chorus-connect') ]
 	.forEach(a=>{ a.addEventListener('change', connectModules); });
 
-    connectModules();
     
     //*** MasterGain Controller ***//
     audio.setGainControl(masterGain, document.getElementById('range-gain'), document.getElementById('span-gain'));

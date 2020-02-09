@@ -24,12 +24,15 @@ import log from './math/log.js'
 import asin from './math/asin.js'
 import acos from './math/acos.js'
 import atan from './math/atan.js'
+import sinh from './math/sinh.js'
+import cosh from './math/cosh.js'
 
 import legendre from './math/legendre.js'
 import hermite  from './math/hermite.js'
 import laguerre from './math/laguerre.js'
 import assocLegendre from './math/assocLegendre.js'
 import assocLaguerre from './math/assocLaguerre.js'
+import sphereBessel from './math/sphereBessel.js'
 
 import diff     from './math/diff.js'
 import integral from './math/integral.js'
@@ -62,13 +65,16 @@ const math={
     asin: asin,
     acos: acos,
     atan: atan,
-
+    sinh: sinh,
+    cosh: cosh,
+    
     legendre: legendre,
     hermite:  hermite,
     laguerre: laguerre,
     assocLegendre: assocLegendre,
     assocLaguerre: assocLaguerre,
-    
+//    sphereBessel: sphereBessel,  // 0<x<10で発振がある
+     
     diff: diff,
     integral: integral,
     solver: solver,

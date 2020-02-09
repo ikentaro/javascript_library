@@ -11,7 +11,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
     sum=math.add(sum, math.integral.simpson(func, z2, z3));
     sum=math.add(sum, math.integral.simpson(func, z3, z0));
     console.log('Res(1/z)=', sum);
-    
-    
+
+    console.log(math.integral.de);
+    console.log(math.integral.de.infToInf(x=> 1/(1+x**2)), Math.PI);
+    console.log(math.integral.de.infToInf(x=> Math.exp(-x*x)), Math.sqrt(Math.PI));
+
+    console.log(math.integral.de.zeroToInf(x=> 1/(x**2+Math.sqrt(x))), 4*Math.sqrt(3)*Math.PI/9);
+//    console.log(math.integral.de.zeroToInf(x=> Math.sin(x*x)), Math.sqrt(Math.PI/8));
     console.log('===== integral test FINISH =====');
 });
