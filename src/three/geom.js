@@ -11,9 +11,9 @@ import lathe     from './geom/lathe.js'
 const geom={
     plane:     plane,
     box:       box,
+    cube:      cube,
     sphere:    sphere,
     circle:    circle,
-    cube:      cube,
     torusKnot: torusKnot,
     lathe:     lathe,
 }
