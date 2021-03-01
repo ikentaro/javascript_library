@@ -15,7 +15,7 @@
     "mathjax": "^3.0.0",
     "regenerator-runtime": "^0.13.2",
     "snapsvg": "^0.5.1",
-    "three": "^0.107.0",
+    "three": "^0.125.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   },
